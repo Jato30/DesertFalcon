@@ -87,6 +87,7 @@ clean:
 	$(RM) $(EXEC)
 
 .PHONY: debug clean release again
+.IGNORE: clean dclean
 #regra pra debug
 print-% : ; @echo $* = $($*)
 
