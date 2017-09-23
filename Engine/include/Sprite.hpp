@@ -66,14 +66,13 @@ class Sprite {
 			\brief Renderiza a imagem.
 			\param Rect world Região a partir do qual a imagem deve ser renderizada.
 			\param float angle Ângulo de rotação da imagem.
-			\param bool isCoordOnWorld Verdadeiro se a região a ser renderizada deve ser convertida do mundo para tela. Falso se as coordenadas já estão convertidas (UI e BGs, por exemplo).
 
 			Renderiza o corte da imagem existente em clipRect nas posições (x, y) da informada nos argumentos.
 			A imagem será rotacionada de acordo com o argumento angle.
 			Os valores do retângulo serão convertidos do mundo para tela se isCoordOnWorld for verdadeiro.
 			É realizado uma otimização para que, se a Sprite não possuir nenhuma coordenada na tela, ela não será renderizada.
 		*/
-		void Render(Rect, float = 0, bool = true) const;
+		void Render(Rect, float = 0) const;
 		/**
 			\brief Informa a largura do sprite
 

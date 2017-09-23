@@ -185,64 +185,6 @@ class InputManager {
 		*/
 		static InputManager& GetInstance(void);
 
-		/**
-			\brief Informa se um botão do controle foi pressionado no frame corrente
-			\param int button Botão do controle cujo o estado é requerido
-			\return bool Booleano que informa se o botão foi pressionado ou não no frame corrente.
-
-			Retorna verdadeiro se o controllerState do botão for falso E o mouseUpdate do botão for igual ao updateCounter.
-			Caso contrário retorna-se o valor falso.
-		*/
-
-		bool ButtonPress(int) const;
-		/**
-			\brief Informa se um botão do controle foi solto no frame corrente
-			\param int button Botão do controle cujo o estado é requierido
-			\return bool Booleano que informa se o botão foi solto ou não no frame corrente.
-
-			Retorna verdadeiro se o controllerState do botao for falso E o controllerUpdate do botão for igual ao updateCounter.
-			Caso contrário retorna-se o valor falso.
-		*/
-		bool ButtonRelease(int) const;
-		/**
-			\brief Informa se um botão do controle está pressionada no momento
-			\param int button Botão do mouse cujo o estado é requierido
-			\return bool Booleano que informa se o botão está pressionado ou não.
-
-			Retorna verdadeiro se o controllerState do botão for verdadeiro.
-			Caso contrário retorna-se o valor falso.
-			
-		*/
-		bool IsButtonDown(int) const;
-		/**
-			\brief Informa se um botão do controle está NÃO pressionada no momento
-			\param int button Botão do mouse cujo o estado é requierido
-			\return bool Booleano que informa se o botão está pressionado ou não.
-
-			Retorna verdadeiro se o controllerState do botão for falso.
-			Caso contrário retorna-se o valor falso.
-			
-		*/
-		bool IsButtonUp(int) const;
-		/**
-			\brief Calcula o deslocamento do sticker esquerdo de um controle
-			\return bool Vetor bidimensional que informa a posição (x,y) do analógico esquerdo.
-			
-		*/
-		Vec2 GetControllerLeftStickState() const;
-		/**
-			\brief Calcula o deslocamento do sticker direito de um controle
-			\return Vec2 Vetor bidimensional que informa a posição (x,y) do analógico direito.
-			
-		*/
-		Vec2 GetControllerRightStickState() const;
-		/**\brief Informa se algum sticker do controle está sendo deslocado nesse frame
-			\return bool Booleano que informa se algum sticker está em uso ou não.
-
-			Retorna verdadeiro se o mouseScroolUpdate for igual a updateCounter.
-			Caso contrário retorna-se o valor falso.
-		*/
-		bool IsControllerSticking(void) const;
 
 	private:
 		/**
@@ -265,13 +207,7 @@ class InputManager {
 		int mouseY;/**< Armazena a posição Y do mouse na janela.*/
 		std::unordered_map<int,bool> keyState;/**< Armazena as informações de quais botões do teclado estão pressionados. As 127 primeiras posições são relativas às suas correspondentes ASCII. As outras posições rastreiam o estado das teclas não-ASCII, como ctrl, shift, caps lock, F1...F12, etc.*/
 		std::unordered_map<int,int>keyUpdate;/**< Armazena as informações de quando os estados dos botões no respectivo keyState foram modificadas. É usado junto com o updateCounter para saber quão recente a informação é.*/
-		std::unordered_map<int,SDL_GameController*>padToController;/**< Armazena a relação entre o indice de um controle e o seu referente ponteiro do tipo SDL_GameController**/
 		
-		std::unordered_map<int,bool> controllerState;/**< Armazena as informações de quais botões do controle estão pressionados.*/
-		std::unordered_map<int,int>	controllerUpdate;/**< Armazena as informações de quando os estados dos botões do controle no respectivo keyState foram modificadas. É usado junto com o updateCounter para saber quão recente a informação é.*/
-		Vec2 controllerLeftStickState;/**< Armazena a informação de em qual timestamp(updateCounter) o controllerLeftStickState foi alterado.*/
-		int controllerStickUpdate;/**< Armazena a informação do último stick feito no controle.*/
-		Vec2 controllerRightStickState;/**< Armazena a informação de em qual timestamp(updateCounter) o controllerStickState foi alterado.*/
 		int mouseScroolUpdate;/**< Armazena a informação de em qual timestamp(updateCounter) o mouseScrollState foi alterado.*/
 		Vec2 mouseScroolState;/**< Armazena a informação do último scroll feito no mouse.*/
 };
