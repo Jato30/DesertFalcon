@@ -101,6 +101,7 @@ clean:
 	$(RM) $(EXEC)
 
 .PHONY: debug clean release again doc
+.IGNORE: clean
 #regra pra debug
 print-% : ; @echo $* = $($*)
 

@@ -1,5 +1,5 @@
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef __ERROR_HPP__
+#define __ERROR_HPP__
 
 #include <iostream>
 #include "stdlib.h"
@@ -45,4 +45,4 @@ typedef unsigned int uint;
 
 //void Error(char const * errMsg);
 
-#endif // ERROR_H
+#endif // __ERROR_HPP__
