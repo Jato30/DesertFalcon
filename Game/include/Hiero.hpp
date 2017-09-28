@@ -3,12 +3,13 @@
 
 #include "GameObject.hpp"
 #include "Sprite.hpp"
+#include "Vec2.hpp"
 
 #include <string>
 
 class Hiero : public GameObject {
      public:
-          Hiero();
+          Hiero(Vec2 pos);
 		~Hiero();
 		void Update(float);
 		void Render(void);
