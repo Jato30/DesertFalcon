@@ -23,10 +23,6 @@ class Hiero : public GameObject {
           
 	private:
           Sprite sp;
-          Vec2 speed;
-          int hp;
 };
-
-#include "ActionManager.hpp"
 
 #endif // __HIERO_HPP__

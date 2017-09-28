@@ -25,6 +25,7 @@ class StageState: public State {
 
 	private:
 		Sprite bg;
+		Timer newHiero;
 };
 
 #include "Hiero.hpp"
