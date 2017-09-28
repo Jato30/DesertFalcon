@@ -158,6 +158,8 @@ class Vec2 {
 			Retorna verdadeiro se o ponto dado pelo Vec2 estiver no Rect, falso caso contrário.
 		*/
 		bool IsInRect(SDL_Rect const &rect) const;
+		Vec2 operator/(int) const;
+		Vec2& operator=(const int b);
 		float x;/**< Coordenada x do vetor/ponto.*/
 		float y;/**< Coordenada y do vetor/ponto.*/
 };

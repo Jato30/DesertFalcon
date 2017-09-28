@@ -127,6 +127,14 @@ bool Vec2::operator!=(Vec2 const &b) const {
 	return !(*this == b);
 }
 
+Vec2 Vec2::operator/(int a) const {
+	return Vec2(x/a, y/a);
+}
 
+Vec2& Vec2::operator=(const int b) {
+	x= b;
+	y= b;
+	return *this;
+}
 
 
