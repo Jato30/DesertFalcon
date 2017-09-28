@@ -7,6 +7,8 @@
 
 #include <string>
 
+#define LINEAR_SPEED 200
+
 class Hiero : public GameObject {
      public:
           Hiero(Vec2 pos);
@@ -20,7 +22,11 @@ class Hiero : public GameObject {
 		Rect GetWorldRenderedRect(void) const;
           
 	private:
-		Sprite sp;
+          Sprite sp;
+          Vec2 speed;
+          int hp;
 };
+
+#include "ActionManager.hpp"
 
 #endif // __HIERO_HPP__

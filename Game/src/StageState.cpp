@@ -20,19 +20,6 @@ void StageState::Update(float dt){
         popRequested = true;
     }
 
-
-    // if(INPUT_MANAGER.IsKeyDown('[')){
-	// 	Resources::ChangeMusicVolume(-STAGE_STATE_DELTA_VOLUME);
-	// }
-	// if(INPUT_MANAGER.IsKeyDown(']')){
-	// 	Resources::ChangeMusicVolume(STAGE_STATE_DELTA_VOLUME);
-	// }
-	// if(INPUT_MANAGER.IsKeyDown(',')){
-	// 	Resources::ChangeSoundVolume(-STAGE_STATE_DELTA_VOLUME);
-	// }
-	// if(INPUT_MANAGER.IsKeyDown('.')){
-	// 	Resources::ChangeSoundVolume(STAGE_STATE_DELTA_VOLUME);
-	// }
 }
 
 void StageState::Render(void) const {
