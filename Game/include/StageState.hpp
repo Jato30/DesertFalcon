@@ -27,4 +27,8 @@ class StageState: public State {
 		Sprite bg;
 };
 
+#include "Hiero.hpp"
+#include "Vec2.hpp"
+#include "Game.hpp"
+
 #endif // __STAGE_STATE_HPP__

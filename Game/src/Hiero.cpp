@@ -10,7 +10,7 @@ Hiero::~Hiero(){
 }
 
 void Hiero::Update(float dt){
-     
+     sp.Update(dt);
 }
 
 void Hiero::Render(void){
