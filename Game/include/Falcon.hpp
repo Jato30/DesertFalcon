@@ -4,10 +4,9 @@
 #include "GameObject.hpp"
 #include "Vec2.hpp"
 #include "Sprite.hpp"
+#include "GameDefines.hpp"
 
 #include <string>
-
-#define LINEAR_SPEED 200
 
 class Falcon : public GameObject {
      public:
@@ -20,6 +19,7 @@ class Falcon : public GameObject {
           void NotifyCollision(GameObject&);
           bool Is(string);
           Rect GetWorldRenderedRect(void) const;
+          void Damage(int) const;
      
      private:
           Sprite sp;
@@ -29,6 +29,7 @@ class Falcon : public GameObject {
 
 #include "ActionManager.hpp"
 #include "Window.hpp"
+#include "Hiero.hpp"
 
 #endif // __FALCON_HPP__
 

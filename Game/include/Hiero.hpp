@@ -4,6 +4,7 @@
 #include "GameObject.hpp"
 #include "Sprite.hpp"
 #include "Vec2.hpp"
+#include "GameDefines.hpp"
 
 #include <string>
 

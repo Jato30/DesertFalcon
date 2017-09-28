@@ -14,12 +14,25 @@ StageState::~StageState(){
 void StageState::Update(float dt){
     UpdateArray(dt);
     
+    // Novo Hiero
     newHiero.Update(dt);
     if(newHiero.Get() > 10){
         AddObject(new Hiero(Vec2(rand() % (int) Window::GetInstance().GetWindowDimensions().x, rand() % (int) Window::GetInstance().GetWindowDimensions().y)));
         newHiero.Restart();
     }
 
+    // Confere colisão entre GOs
+    if(!objectArray.empty()){
+		for(uint count = 0; count1 < objectArray.size() - 1; count1++) {
+			for(uint count2 = count1 + 1; count2 < objectArray.size(); count2++) {
+				if(Collision::IsColliding(objectArray[count1]->box, objectArray[count2]->box, objectArray[count1]->rotation, objectArray[count2]->rotation)) {
+					objectArray[count1]->NotifyCollision(*objectArray[count2]);
+					objectArray[count2]->NotifyCollision(*objectArray[count1]);
+				}
+			}
+		}
+    }
+    
 
     if(QuitRequested() || InputManager::GetInstance().QuitRequested()){
         quitRequested = true;

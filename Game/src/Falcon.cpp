@@ -17,7 +17,7 @@ Falcon::~Falcon(){
 void Falcon::Update(float dt){
      sp.Update(dt);
 
-     
+
      // Movimento
      if(ActionManager::LeftArrowAction()){
           speed.x -= LINEAR_SPEED * dt;
@@ -49,6 +49,11 @@ void Falcon::Update(float dt){
      if(box.y < 0){
           box.y = 0;
      }
+
+     if(hp <= 0){
+          hp = 0;
+          RequestDelete();
+     }
 }
 
 void Falcon::Render(void){
@@ -64,7 +69,9 @@ void Falcon::RequestDelete(void){
 }
 
 void Falcon::NotifyCollision(GameObject& object){
-
+     if(object.Is("Hiero")){
+          Damage(HIERO_DAMAGE);
+	}
 }
 
 bool Falcon::Is(string type){
@@ -73,5 +80,9 @@ bool Falcon::Is(string type){
 
 Rect Falcon::GetWorldRenderedRect(void) const{
      return box;
+}
+
+void Falcon::Damage(int damage) const{
+     hp -= damage;
 }
 
