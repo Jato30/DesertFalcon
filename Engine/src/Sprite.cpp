@@ -1,7 +1,7 @@
 #include "Sprite.hpp"
 
 #include "Error.hpp"
-#include "Game.hpp"
+#include "Window.hpp"
 #include "Resources.hpp"
 
 // Alterar esses valores altera a parte da textura que será renderizada
@@ -58,10 +58,10 @@ void Sprite::SetClip(int x, int y, int w, int h) {
 }
 
 void Sprite::Render(Rect world, float angle) const {
-	Game& game = Game::GetInstance();
+	Window& window = Window::GetInstance();
 
 	{// Se todas as coordenadas do Rect estão fora da tela, não precisa renderizar
-		Vec2 screenSize = game.GetWindowDimensions();
+		Vec2 screenSize = window.GetWindowDimensions();
 		float points[4] = {world.x, world.y, world.x+world.w, world.y+world.h};
 		
 		bool isOutOfBounds = true;
@@ -86,7 +86,7 @@ void Sprite::Render(Rect world, float angle) const {
 	}
 
 	SDL_Rect dst = world;
-	if(SDL_RenderCopyEx(game.GetRenderer(), texture.get(), &clipRect, &dst, angle, NULL, SDL_FLIP_NONE) ){//verifica se haverá erro
+	if(SDL_RenderCopyEx(window.GetRenderer(), texture.get(), &clipRect, &dst, angle, NULL, SDL_FLIP_NONE) ){//verifica se haverá erro
 		// Verifica se haverá erro
 		Error(SDL_GetError());
 	}
