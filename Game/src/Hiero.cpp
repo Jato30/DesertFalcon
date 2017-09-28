@@ -27,7 +27,9 @@ void Hiero::RequestDelete(void){
 }
 
 void Hiero::NotifyCollision(GameObject& object){
-
+     if(object.Is("Falcon")){
+          RequestDelete();
+	}
 }
 
 bool Hiero::Is(string type){

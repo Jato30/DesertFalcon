@@ -4,4 +4,5 @@
 #define LINEAR_SPEED 200
 #define FALCON_DAMAGE 250
 #define HIERO_DAMAGE 1
-
+#define PLAYER_LIFE 1000
+#define HIERO_COOLDOWN 5

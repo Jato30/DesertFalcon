@@ -50,6 +50,7 @@ void Falcon::Update(float dt){
           box.y = 0;
      }
 
+     // Verifica morte
      if(hp <= 0){
           hp = 0;
           RequestDelete();
@@ -82,7 +83,7 @@ Rect Falcon::GetWorldRenderedRect(void) const{
      return box;
 }
 
-void Falcon::Damage(int damage) const{
+void Falcon::Damage(int damage){
      hp -= damage;
 }
 
