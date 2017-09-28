@@ -1,7 +1,9 @@
 #include "StageState.hpp"
 
-StageState::StageState() : State(), bg("./resources/img/ocean.jpg"), newHiero(){
-    AddObject(new Hiero(Window::GetInstance().GetWindowDimensions() / 2));
+StageState::StageState() : State()/*, bg("./resources/img/ocean.jpg")*/, newHiero(){
+    Vec2 center(Window::GetInstance().GetWindowDimensions() / 2);
+    AddObject(new Falcon(Vec2(0., center.y), 1000));
+    AddObject(new Hiero(center));
     quitRequested = false;
 }
 
@@ -29,7 +31,7 @@ void StageState::Update(float dt){
 }
 
 void StageState::Render(void) const {
-    bg.Render(Rect(0, 0, bg.GetWidth(), bg.GetHeight()));
+    // bg.Render(Rect(0, 0, bg.GetWidth(), bg.GetHeight()));
 
     RenderArray();
 }

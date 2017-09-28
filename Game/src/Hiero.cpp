@@ -26,7 +26,7 @@ void Hiero::RequestDelete(void){
      dead = true;
 }
 
-void Hiero::NotifyCollision(GameObject){
+void Hiero::NotifyCollision(GameObject& object){
 
 }
 

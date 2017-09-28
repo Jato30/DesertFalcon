@@ -32,5 +32,6 @@ class StageState: public State {
 #include "Vec2.hpp"
 #include "Window.hpp"
 #include "InputManager.hpp"
+#include "Falcon.hpp"
 
 #endif // __STAGE_STATE_HPP__

@@ -7,8 +7,6 @@
 
 #include <string>
 
-#define LINEAR_SPEED 200
-
 class Hiero : public GameObject {
      public:
           Hiero(Vec2 pos);
@@ -17,7 +15,7 @@ class Hiero : public GameObject {
 		void Render(void);
 		bool IsDead(void);
 		void RequestDelete(void);
-		void NotifyCollision(GameObject);
+		void NotifyCollision(GameObject&);
           bool Is(string);
 		Rect GetWorldRenderedRect(void) const;
           
