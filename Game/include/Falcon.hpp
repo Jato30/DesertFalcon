@@ -28,5 +28,7 @@ class Falcon : public GameObject {
 };
 
 #include "ActionManager.hpp"
+#include "Window.hpp"
 
 #endif // __FALCON_HPP__
+

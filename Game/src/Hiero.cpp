@@ -37,3 +37,4 @@ bool Hiero::Is(string type){
 Rect Hiero::GetWorldRenderedRect(void) const{
      return box;
 }
+

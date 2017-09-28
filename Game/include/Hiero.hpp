@@ -24,3 +24,4 @@ class Hiero : public GameObject {
 };
 
 #endif // __HIERO_HPP__
+

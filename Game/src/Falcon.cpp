@@ -17,6 +17,7 @@ Falcon::~Falcon(){
 void Falcon::Update(float dt){
      sp.Update(dt);
 
+     
      // Movimento
      if(ActionManager::LeftArrowAction()){
           speed.x -= LINEAR_SPEED * dt;
@@ -30,10 +31,24 @@ void Falcon::Update(float dt){
      if(ActionManager::DownArrowAction()){
           speed.y += LINEAR_SPEED * dt;
      }
-
      box.x += speed.x;
      box.y += speed.y;
      speed = 0;
+
+
+     // Out of bounds
+     if((box.x + box.w) >= Window::GetInstance().GetWindowDimensions().x){
+          box.x = -box.w + Window::GetInstance().GetWindowDimensions().x;
+     }
+     if((box.y + box.h) >= Window::GetInstance().GetWindowDimensions().y){
+          box.y = -box.h + Window::GetInstance().GetWindowDimensions().y;
+     }
+     if(box.x < 0){
+          box.x = 0;
+     }
+     if(box.y < 0){
+          box.y = 0;
+     }
 }
 
 void Falcon::Render(void){
