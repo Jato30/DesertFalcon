@@ -32,7 +32,7 @@
 *.app
 
 # Configuração local do vscode
-.vscode/launch.json
+.vscode/*
 
 #configuração local do Qt
 *.user

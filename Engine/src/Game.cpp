@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "Window.hpp"
 
 #include <stdlib.h>
 #include <ctime>
@@ -10,7 +11,8 @@ Game* Game::instance = nullptr;
 
 Game::Game(std::string title, int width, int height)
 		: dt(0.0)
-		, inputManager(InputManager::GetInstance()) {
+		, inputManager(InputManager::GetInstance())
+		, window(title, width, height) {
 		//, frameStart(SDL_GetTicks()) {
 	SDL_version compiled;
 	SDL_version linked;
@@ -28,9 +30,6 @@ Game::Game(std::string title, int width, int height)
 	}
 	Game::instance = this;
 
-	if(0 != SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER)) {
-		Error(SDL_GetError());
-	}
 	int result = IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF);
 	
 	if(0 == result) {
@@ -49,15 +48,7 @@ Game::Game(std::string title, int width, int height)
 		Error("Loading IMG_INIT_TIF failed: " << IMG_GetError());
 	}
 
-	window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_RESIZABLE);
-	if(nullptr == window) {
-		Error(SDL_GetError());
-	}
-
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	if(nullptr == renderer) {
-		Error(SDL_GetError());
-	}
+	// window = Window(title, width, height);
 
 	result = Mix_Init(MIX_INIT_MP3 | MIX_INIT_OGG);
 	if(0 == result) {
@@ -103,8 +94,6 @@ Game::~Game() {
 	TTF_Quit();
 	Mix_CloseAudio();
 	Mix_Quit();
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
 	IMG_Quit();
 	SDL_Quit();
 }
@@ -115,10 +104,6 @@ Game& Game::GetInstance(void) {
 
 State& Game::GetCurrentState(void) const {
 	return *stateStack.top();
-}
-
-SDL_Renderer* Game::GetRenderer(void) const {
-	return renderer;
 }
 
 void Game::Push(State* state) {
@@ -153,12 +138,9 @@ void Game::Run(void) {
 		CalculateDeltaTime();
 		inputManager.Update();
 		stateStack.top()->Update(GetDeltaTime());
-		if(-1 == SDL_SetRenderDrawColor(renderer, CLEAR_COLOR)) {
-			Error(SDL_GetError());
-		}
-		SDL_RenderClear(renderer);
+		Window::GetInstance().ReDoRenderer();
 		stateStack.top()->Render();
-		SDL_RenderPresent(renderer);
+		SDL_RenderPresent(Window::GetInstance().GetRenderer());
 		UpdateStack();
 	}
 
@@ -201,16 +183,6 @@ void Game::UpdateStack(void) {
 	}
 }
 
-Vec2 Game::GetWindowDimensions(void) const {
-	Vec2 ret;
-	int x = 0;
-	int y = 0;
-	SDL_GetWindowSize(window, &x, &y);
-	ret.x = x;
-	ret.y = y;
-	return ret;
-}
-
 void Game::SetMaxFramerate(signed long int newMaxFramerate) {
 	REPORT_DEBUG("\tnewMaxFramerate= " << newMaxFramerate);
 	if (newMaxFramerate < 1) {
@@ -235,46 +207,6 @@ void Game::LimitFramerate(bool limit) {
 
 bool Game::IsFramerateLimited(void) const {
 	return capFramerate;
-}
-
-SDL_Window* Game::GetWindow(void) const {
-	return window;
-}
-
-void Game::SetWindowDimensions(Vec2 size){
-	SDL_SetWindowSize(window, size.x, size.y);
-	SetWindowCentered();
-}
-
-void Game::SetWindowFullscreen(bool isFullScreen){
-	SDL_SetWindowFullscreen(window, isFullScreen ? SDL_WINDOW_FULLSCREEN : 0);
-	SetWindowCentered();
-}
-
-void Game::SetWindowMaximized(void){
-	SDL_MaximizeWindow(window);
-	SetWindowCentered();
-}
-
-void Game::SetWindowBorderless(bool isBorderless){
-	SDL_SetWindowBordered(window, isBorderless ? SDL_FALSE : SDL_TRUE);
-	SetWindowCentered();
-}
-
-void Game::SetWindowCentered(void){
-	SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
-}
-
-bool Game::GetWindowFullscreen(void) const{
-	return SDL_GetWindowFlags(window) & SDL_WINDOW_FULLSCREEN;
-}
-
-bool Game::GetWindowMaximized(void) const{
-	return SDL_GetWindowFlags(window) & SDL_WINDOW_MAXIMIZED;
-}
-
-bool Game::GetWindowBorderless(void) const{
-	return SDL_GetWindowFlags(window) & SDL_WINDOW_BORDERLESS;
 }
 
 unsigned int Game::GetTicks(void){
