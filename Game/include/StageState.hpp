@@ -30,7 +30,7 @@ class StageState: public State {
 
 #include "Hiero.hpp"
 #include "Vec2.hpp"
-#include "Game.hpp"
+#include "Window.hpp"
 #include "InputManager.hpp"
 
 #endif // __STAGE_STATE_HPP__
