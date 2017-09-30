@@ -2,7 +2,7 @@
 
 StageState::StageState() : State()/*, bg("./resources/img/ocean.jpg")*/, newHiero(){
     Vec2 center(Window::GetInstance().GetWindowDimensions() / 2);
-    AddObject(new Falcon(Vec2(0., center.y), PLAYER_LIFE));
+    AddObject(new Falcon(PLAYER_BASE_LIFE));
     AddObject(new Hiero(center));
     quitRequested = false;
 }

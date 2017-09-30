@@ -9,7 +9,7 @@
 
 class Falcon : public GameObject {
 public:
-     Falcon(Vec2 pos, int hitpoints);
+     Falcon(int hitpoints);
      ~Falcon();
      void Update(float);
      void Render(void);

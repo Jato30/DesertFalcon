@@ -1,12 +1,12 @@
 #include "Falcon.hpp"
 
-Falcon::Falcon(Vec2 pos, int hitpoints) : GameObject()
+Falcon::Falcon(int hitpoints) : GameObject()
           , sp("./resources/img/falcon.png")
           , hp(hitpoints)
           , speed(0., 0.) {
 
      rotation = 0;
-     box = Vec2(pos.x, pos.y);
+     box = FALCON_INITIAL_POS;
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));
 }
 
@@ -20,27 +20,36 @@ void Falcon::Update(float dt){
 
      // Movimento
      if(ActionManager::LeftArrowAction()){
-          speed.x -= LINEAR_SPEED * dt;
+          speed = -LINEAR_SPEED * dt;
+          box = box + speed;
+
+          // Out of bounds
+          if(box.x < 0){
+               box.x = 0;
+               box.y -= speed.y;
+          }
+          printf("SPEED: %.5f, %.5f\n", speed.x, speed.y);
+          printf("BOX: %.5f, %.5f\n", box.x, box.y);
      }
-     if(ActionManager::RightArrowAction()){
-          speed.x += LINEAR_SPEED * dt;
+     else if(ActionManager::RightArrowAction()){
+          speed = LINEAR_SPEED * dt;
+          box = box + speed;
+
+          // Out of bounds
+          if((box.y + box.h) > Window::GetInstance().GetWindowDimensions().y){
+               box.y = -box.h + Window::GetInstance().GetWindowDimensions().y;
+               box.x -= speed.x;
+          }
+          printf("SPEED: %.5f, %.5f\n", speed.x, speed.y);
+          printf("BOX: %.5f, %.5f\n", box.x, box.y);
      }
-     if(ActionManager::UpArrowAction()){
-          speed.y -= LINEAR_SPEED * dt;
-     }
-     if(ActionManager::DownArrowAction()){
-          speed.y += LINEAR_SPEED * dt;
-     }
-     box.x += speed.x;
-     box.y += speed.y;
-     speed = 0;
 
 
      // Out of bounds
-     if((box.x + box.w) >= Window::GetInstance().GetWindowDimensions().x){
+     if((box.x + box.w) > Window::GetInstance().GetWindowDimensions().x){
           box.x = -box.w + Window::GetInstance().GetWindowDimensions().x;
      }
-     if((box.y + box.h) >= Window::GetInstance().GetWindowDimensions().y){
+     if((box.y + box.h) > Window::GetInstance().GetWindowDimensions().y){
           box.y = -box.h + Window::GetInstance().GetWindowDimensions().y;
      }
      if(box.x < 0){
@@ -49,6 +58,7 @@ void Falcon::Update(float dt){
      if(box.y < 0){
           box.y = 0;
      }
+
 
      // Verifica morte
      if(hp <= 0){
