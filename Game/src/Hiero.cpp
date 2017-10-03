@@ -26,8 +26,10 @@ void Hiero::RequestDelete(void){
      dead = true;
 }
 
-void Hiero::NotifyCollision(GameObject){
-
+void Hiero::NotifyCollision(GameObject& object){
+     if(object.Is("Falcon")){
+          RequestDelete();
+	}
 }
 
 bool Hiero::Is(string type){
@@ -37,3 +39,4 @@ bool Hiero::Is(string type){
 Rect Hiero::GetWorldRenderedRect(void) const{
      return box;
 }
+

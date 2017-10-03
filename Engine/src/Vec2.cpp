@@ -137,4 +137,9 @@ Vec2& Vec2::operator=(const int b) {
 	return *this;
 }
 
+Vec2& Vec2::operator-() {
+	x *= -1;
+	y *= -1;
+	return *this;
+}
 

@@ -160,6 +160,7 @@ class Vec2 {
 		bool IsInRect(SDL_Rect const &rect) const;
 		Vec2 operator/(int) const;
 		Vec2& operator=(const int b);
+		Vec2& operator-();
 		float x;/**< Coordenada x do vetor/ponto.*/
 		float y;/**< Coordenada y do vetor/ponto.*/
 };
