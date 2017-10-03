@@ -6,7 +6,7 @@ Falcon::Falcon(int hitpoints) : GameObject()
           , speed(0., 0.) {
 
      rotation = 0;
-     box = FALCON_INITIAL_POS;
+     box = Vec2(20, 0);
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));
 }
 
@@ -21,28 +21,12 @@ void Falcon::Update(float dt){
      // Movimento
      if(ActionManager::LeftArrowAction()){
           speed = -LINEAR_SPEED * dt;
-          box = box + speed;
-
-          // Out of bounds
-          if(box.x < 0){
-               box.x = 0;
-               box.y -= speed.y;
-          }
-          printf("SPEED: %.5f, %.5f\n", speed.x, speed.y);
-          printf("BOX: %.5f, %.5f\n", box.x, box.y);
      }
      else if(ActionManager::RightArrowAction()){
           speed = LINEAR_SPEED * dt;
-          box = box + speed;
-
-          // Out of bounds
-          if((box.y + box.h) > Window::GetInstance().GetWindowDimensions().y){
-               box.y = -box.h + Window::GetInstance().GetWindowDimensions().y;
-               box.x -= speed.x;
-          }
-          printf("SPEED: %.5f, %.5f\n", speed.x, speed.y);
-          printf("BOX: %.5f, %.5f\n", box.x, box.y);
      }
+     box = box + speed;
+     speed = 0;
 
 
      // Out of bounds
@@ -68,7 +52,7 @@ void Falcon::Update(float dt){
 }
 
 void Falcon::Render(void){
-     sp.Render(box);
+     sp.Render(box, rotation);
 }
 
 bool Falcon::IsDead(void){
