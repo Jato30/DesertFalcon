@@ -1,9 +1,7 @@
 #include "StageState.hpp"
 
 StageState::StageState() : State()/*, bg("./resources/img/ocean.jpg")*/, newHiero(){
-    Vec2 center(Window::GetInstance().GetWindowDimensions() / 2);
     AddObject(new Falcon(PLAYER_BASE_LIFE));
-    AddObject(new Hiero(center));
     quitRequested = false;
 }
 
@@ -17,7 +15,7 @@ void StageState::Update(float dt){
     // Novo Hiero
     newHiero.Update(dt);
     if(newHiero.Get() > HIERO_COOLDOWN){
-        AddObject(new Hiero(Vec2(rand() % (int) Window::GetInstance().GetWindowDimensions().x, rand() % (int) Window::GetInstance().GetWindowDimensions().y)));
+        AddObject(new Hiero(Vec2(Window::GetInstance().GetWindowDimensions().x, rand() % (int) Window::GetInstance().GetWindowDimensions().y)));
         newHiero.Restart();
     }
 

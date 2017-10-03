@@ -20,10 +20,10 @@ void Falcon::Update(float dt){
 
      // Movimento
      if(ActionManager::LeftArrowAction()){
-          speed = -LINEAR_SPEED * dt;
+          speed.y = -LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
      }
      else if(ActionManager::RightArrowAction()){
-          speed = LINEAR_SPEED * dt;
+          speed.y = LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
      }
      box = box + speed;
      speed = 0;

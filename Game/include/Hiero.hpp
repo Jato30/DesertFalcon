@@ -21,9 +21,11 @@ public:
 	
 private:
 	Sprite sp;
+	Vec2 speed;
 };
 
 #include "GameDefines.hpp"
+#include "Window.hpp"
 
 #endif // __HIERO_HPP__
 

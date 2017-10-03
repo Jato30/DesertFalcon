@@ -1,17 +1,26 @@
 #include "Hiero.hpp"
 
-Hiero::Hiero(Vec2 pos) : GameObject(), sp("./resources/img/hiero.png") {
+Hiero::Hiero(Vec2 pos) : GameObject(), sp("./resources/img/hiero.png"), speed(0., 0.) {
      rotation = 0;
      box = Vec2(pos.x, pos.y);
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));
 }
 
 Hiero::~Hiero(){
-
+     
 }
 
 void Hiero::Update(float dt){
      sp.Update(dt);
+
+     // Movimento
+     speed.x = -LINEAR_SPEED * dt;
+     box = box + speed;
+
+     // Out of bounds
+     if((box.x < 0) || ((box.y + box.h) > Window::GetInstance().GetWindowDimensions().y) || (box.y < 0)){
+          RequestDelete();
+     }
 }
 
 void Hiero::Render(void){
