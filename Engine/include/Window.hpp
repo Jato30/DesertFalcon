@@ -10,10 +10,33 @@
 
 #define CLEAR_COLOR 0,0,0,255
 
+/**
+	\brief Classe que gerencia a janela
+	
+	Contém o renderer e a window da SDL.
+*/
 class Window{
-     public:
-          Window();
-          Window(std::string title, int width, int height);
+	public:
+		/**
+			\brief Construtor
+			\param std::string title Nome da janela.
+			\param int width Largura da janela em pixels.
+			\param int height Altura da janela em pixels
+			
+			Para fins de detecção de problemas futuros, a versão da SDL para a qual o jogo foi compilado e a versão na qual a SDL está sendo linkada no carregamento.
+			A deferença entre essas versões podem ser a causa de alguns bugs.
+			As seguintes tarefas são feitas:
+				- A SDL_Video é iniciada.
+				- Verifica-se se já existe algum outra instância de janela, se existir o jogo é fechado. Só deve haver uma instância da janela (Singleton).
+				- A janela é criada com o o títlulo title, com dimensões width x height.
+				- O SDL_Renderer é inicializado.
+		*/
+		Window(std::string title, int width, int height);
+		/**
+			\brief Destrutor
+			
+			Os sistemas da SDL que foram inicializados são destruídos na ordem inversa em que foram inicializados. Para garantir que primeiro os subsistemas que não tem dependêntes sejam desalocados primeiros.
+		*/
           ~Window();
           /**
 			\brief Obtém referência da Window
@@ -96,7 +119,12 @@ class Window{
 
 			Retorna true se a janela estiver sem bordas ou false se estiver com bordas.
 		*/
-          bool GetWindowBorderless(void) const;
+		bool GetWindowBorderless(void) const;
+		/**
+			\brief Limpa o renderer.
+			
+			Limpa o renderer para que o próximo loop se inicie.
+		*/
           void ReDoRenderer(void);
           
      private:
