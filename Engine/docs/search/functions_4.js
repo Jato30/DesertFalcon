@@ -1,20 +1,6 @@
 var searchData=
 [
-  ['gameobject',['GameObject',['../classGameObject.html#a78da814b13c8bf344ba0c5f72cb22af3',1,'GameObject']]],
-  ['get',['Get',['../classTimer.html#ab8fdb7021400bfeeb59666c4cd7534c3',1,'Timer']]],
-  ['getcontrollerleftstickstate',['GetControllerLeftStickState',['../classInputManager.html#ab320da5dbf24a5c68899bb856570005c',1,'InputManager']]],
-  ['getcontrollerrightstickstate',['GetControllerRightStickState',['../classInputManager.html#a5b82bc379ae6b2673d7b8b739d0020e7',1,'InputManager']]],
-  ['getfont',['GetFont',['../classResources.html#a39eccf1feb63b7debc0b037db99c9672',1,'Resources']]],
-  ['getheight',['GetHeight',['../classSprite.html#af52222161cb98cfcdc136e392b1f442a',1,'Sprite']]],
-  ['getimage',['GetImage',['../classResources.html#a8de88d0fe976f31d2bed52248e1cf700',1,'Resources']]],
-  ['getinstance',['GetInstance',['../classInputManager.html#a1d8e9122c81d5066985af82f6f02842b',1,'InputManager']]],
-  ['getmousepos',['GetMousePos',['../classInputManager.html#ae8c37d931bce337ded639b3204615deb',1,'InputManager']]],
-  ['getmousex',['GetMouseX',['../classInputManager.html#a2a0d20df0466e1ab838fbc4cd12b07d1',1,'InputManager']]],
-  ['getmousey',['GetMouseY',['../classInputManager.html#acd6393a9ac3fa1c23eac737a9f0a2896',1,'InputManager']]],
-  ['getmusic',['GetMusic',['../classResources.html#ad95f29b60c97c2556350a9bc3bbc2809',1,'Resources']]],
-  ['getsize',['GetSize',['../classText.html#a56916530776ec1525d6b9bf94c51b27b',1,'Text']]],
-  ['getsound',['GetSound',['../classResources.html#a4e5ea0354e599e4d9eb4ea639c866a1b',1,'Resources']]],
-  ['gettexture',['GetTexture',['../classSprite.html#a258dd6fdcef7ebfd17b0025f07cfba20',1,'Sprite']]],
-  ['getwidth',['GetWidth',['../classSprite.html#a8dbeea0fcf56059ddb6c5d9c78b468cb',1,'Sprite']]],
-  ['getworldrenderedrect',['GetWorldRenderedRect',['../classGameObject.html#a4a18888a700bbda3badb37d85f6abff7',1,'GameObject']]]
+  ['forcemusicvolume',['ForceMusicVolume',['../classResources.html#ae87916004207e6162044472c16642f46',1,'Resources']]],
+  ['forcesoundvolume',['ForceSoundVolume',['../classResources.html#a24957fae81c9e719657457004422c381',1,'Resources']]],
+  ['frompolarcoord',['FromPolarCoord',['../classVec2.html#a2631303144b814aebfd58011ff0a8aac',1,'Vec2']]]
 ];

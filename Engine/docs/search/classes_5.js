@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['text',['Text',['../classText.html',1,'']]],
-  ['timer',['Timer',['../classTimer.html',1,'']]]
+  ['sprite',['Sprite',['../classSprite.html',1,'']]],
+  ['state',['State',['../classState.html',1,'']]]
 ];

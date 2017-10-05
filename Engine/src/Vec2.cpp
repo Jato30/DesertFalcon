@@ -128,7 +128,13 @@ bool Vec2::operator!=(Vec2 const &b) const {
 }
 
 Vec2 Vec2::operator/(int a) const {
-	return Vec2(x/a, y/a);
+	if(a == 0){
+		REPORT_DEBUG2(a == 0, "Divisao por 0.");
+	}
+	else{
+		return Vec2(x/a, y/a);
+	}
+	return Vec2(x, y);
 }
 
 Vec2& Vec2::operator=(const int b) {

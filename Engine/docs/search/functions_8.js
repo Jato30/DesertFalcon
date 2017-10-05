@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['normalize',['Normalize',['../classVec2.html#afa8553ab94a4b6d0ecb7ab1149e25407',1,'Vec2']]],
-  ['notifycollision',['NotifyCollision',['../classGameObject.html#aeb0b1cbfbb8065cbf691842877d275af',1,'GameObject']]]
+  ['leftarrowaction',['LeftArrowAction',['../classActionManager.html#afb4776f0e58c20d5c09c7e437298ae1b',1,'ActionManager']]],
+  ['limitframerate',['LimitFramerate',['../classGame.html#a9c0d7687de0b28836cf4473985736de0',1,'Game']]],
+  ['loadassets',['LoadAssets',['../classState.html#a60c55c31895344bb499f28a22724fab9',1,'State']]]
 ];

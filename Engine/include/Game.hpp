@@ -40,11 +40,10 @@ class Game {
 			Para fins de detecção de problemas futuros, a versão da SDL para a qual o jogo foi compilado e a versão na qual a SDL está sendo linkada no carregamento.
 			A deferença entre essas versões podem ser a causa de alguns bugs.
 			As seguintes tarefas são feitas:
+				- A janela é criada com o o títlulo title, com dimensões width x height.
 				- O contador de ticks é inicado.
 				- Verifica-se se já existe algum outra instância de jogo, se existir o jogo é fechado. Só deve haver uma instância do jogo (Singleton).
 				- A SDL é iniciada.
-				- A janela é criada com o o títlulo title, com dimensões width x height.
-				- O SDL_Renderer é inicializado.
 				- O mixer é inicializado.
 				- O sistema de áudio é inicializado (é uma inicialização diferente do mixer)
 				- O subsistema de fontes é inicializado.
@@ -55,7 +54,7 @@ class Game {
 			\brief Destrutor
 			
 			A pilha de estados é esvaziada. Se tiver algum estado em storedState ele será deletado.
-			O ClearResources é chamado e os sistemas da SDL que foram inicializados são destruídos na ordem inversa em que foram inicializados. Par garantir que primeiro os subsistemas que não tem dependêntes sejam desalocados primeiros.
+			O ClearResources é chamado e os sistemas da SDL que foram inicializados são destruídos na ordem inversa em que foram inicializados. Para garantir que primeiro os subsistemas que não tem dependêntes sejam desalocados primeiros.
 		*/
 		~Game();
 		/**
@@ -172,7 +171,7 @@ class Game {
 		unsigned int maxFramerate;/**< Armazena o limite superior do framerate*/
 		float frameDuration;/**< Duração mínima de cada frame*/
 		bool capFramerate;/**< Flag para decidir se o framerate do jogo será limitado a um valor máximo ou não.*/
-		Window window;
+		Window window;/**< Objeto que armazena a janela do jogo*/
 };
 
 #endif // __GAME_HPP__

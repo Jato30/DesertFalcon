@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quitrequested',['quitRequested',['../classInputManager.html#a078d1f2f8af5f17005f21f7407dbca57',1,'InputManager']]]
+  ['poprequested',['popRequested',['../classState.html#a9d7c1082cc6592646acec05a6e46f145',1,'State']]]
 ];

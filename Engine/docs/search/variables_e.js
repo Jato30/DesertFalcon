@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['text',['text',['../classText.html#a7da8331e2da684bb0485a3ee7893b415',1,'Text']]],
-  ['texttime',['textTime',['../classText.html#a7b4801a20d93b67e9c05fbf763ba282f',1,'Text']]],
-  ['texture',['texture',['../classSprite.html#a9f90b14f1a69209da8babfa6745dc1fe',1,'Sprite::texture()'],['../classText.html#aea2a82ef1d8b4d448b6b3e524bce2cc2',1,'Text::texture()']]],
-  ['time',['time',['../classTimer.html#a6c45df1d084a18e41e3a35f6a43df0be',1,'Timer']]],
-  ['timeelapsed',['timeElapsed',['../classSprite.html#ab19d07e81660346ed85d92e518cd8399',1,'Sprite']]],
-  ['timeshown',['timeShown',['../classText.html#acbd9eb9838ed8223ba17ab0495828812',1,'Text']]]
+  ['scalex',['scaleX',['../classSprite.html#af76ca5d25866a3107bcec1d2e59f8bcb',1,'Sprite']]],
+  ['scaley',['scaleY',['../classSprite.html#ac4085b0144253c09bc94151a53079104',1,'Sprite']]],
+  ['soundtable',['soundTable',['../classResources.html#abbd116a3bc870ba6578a89b4aa08908c',1,'Resources']]],
+  ['soundvolume',['soundVolume',['../classResources.html#aba29947d0dbb8e1a81a1d6b289c4d0f6',1,'Resources']]],
+  ['statestack',['stateStack',['../classGame.html#a2706caaad0c60784a6671efc9ee147f8',1,'Game']]],
+  ['storedstate',['storedState',['../classGame.html#a46a38cae75b6557890d7c47ad8350a1d',1,'Game']]],
+  ['strobefrequency',['strobeFrequency',['../classText.html#a38e924c6d2f551bae9ab4b73cab1360c',1,'Text']]],
+  ['style',['style',['../classText.html#aaf6b429b30c8e7b380aa2433cf1296ea',1,'Text']]]
 ];
