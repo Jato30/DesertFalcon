@@ -185,12 +185,11 @@ class InputManager {
 		*/
 		static InputManager& GetInstance(void);
 
-
 	private:
 		/**
 			\brief Inicializa os atributos
 
-			Todos os atributos internos não iniciados com zero ou falso, dependendo do tipo.
+			Todos os atributos internos são iniciados com zero ou falso, dependendo do tipo.
 		*/
 		InputManager();
 		/**

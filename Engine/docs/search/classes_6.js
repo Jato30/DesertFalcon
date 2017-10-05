@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vec2',['Vec2',['../classVec2.html',1,'']]]
+  ['text',['Text',['../classText.html',1,'']]],
+  ['timer',['Timer',['../classTimer.html',1,'']]]
 ];

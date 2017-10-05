@@ -158,8 +158,26 @@ class Vec2 {
 			Retorna verdadeiro se o ponto dado pelo Vec2 estiver no Rect, falso caso contrário.
 		*/
 		bool IsInRect(SDL_Rect const &rect) const;
+		/**
+			\brief Divide entradas por um float.
+			\return Vec2 Novo Vec2 com entradas alteradas.
+			
+			Divide entradas (x, y) por um float qualquer diferente de 0.
+		*/
 		Vec2 operator/(int) const;
+		/**
+			\brief Atribui inteiro.
+			\return Vec2& Novo Vec2 com entradas alteradas.
+			
+			Atribui às entradas (x, y) um inteiro qualquer igual para as duas.
+		*/
 		Vec2& operator=(const int b);
+		/**
+			\brief Troca sinal de suas entradas.
+			\return Vec2& Novo Vec2 com entradas alteradas.
+			
+			Multiplica ambas entradas por (-1) para alterar o sinal delas.
+		*/
 		Vec2& operator-();
 		float x;/**< Coordenada x do vetor/ponto.*/
 		float y;/**< Coordenada y do vetor/ponto.*/
