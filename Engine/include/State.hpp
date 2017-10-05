@@ -30,7 +30,7 @@ class State {
 		virtual ~State(void);
 		/**
 			\brief Atualiza os estado do jogo
-			\param dt intervalo de tempo transcorrido desde a última atualização.
+			\param dt Intervalo de tempo transcorrido desde a última atualização.
 
 			Aqui deve ser colocado o código que atualiza o estado do jogo, utilizando dos dados contidos no inputManager, câmera e outras paster que forem julgadas necessárias.
 			Pode-se fazer o uso do UpdateArray() por praticidade.

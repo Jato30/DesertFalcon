@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['vec2_2ehpp',['Vec2.hpp',['../Vec2_8hpp.html',1,'']]]
+  ['text_2ehpp',['Text.hpp',['../Text_8hpp.html',1,'']]],
+  ['timer_2ecpp',['Timer.cpp',['../Timer_8cpp.html',1,'']]],
+  ['timer_2ehpp',['Timer.hpp',['../Timer_8hpp.html',1,'']]]
 ];

@@ -6,6 +6,7 @@
 #include "State.hpp"
 #include "InputManager.hpp"
 #include "Vec2.hpp"
+#include "Window.hpp"
 
 #ifdef _WIN32
 	typedef uint8_t u_int8_t;
@@ -21,7 +22,6 @@
 
 #define MIXER_CHUCK_SIZE 1024
 #define INITIAL_FRAMERATE 60
-#define CLEAR_COLOR 0,0,0,255
 
 /**
 	\brief Classe que modela todo o Jogo
@@ -40,11 +40,10 @@ class Game {
 			Para fins de detecção de problemas futuros, a versão da SDL para a qual o jogo foi compilado e a versão na qual a SDL está sendo linkada no carregamento.
 			A deferença entre essas versões podem ser a causa de alguns bugs.
 			As seguintes tarefas são feitas:
+				- A janela é criada com o o títlulo title, com dimensões width x height.
 				- O contador de ticks é inicado.
 				- Verifica-se se já existe algum outra instância de jogo, se existir o jogo é fechado. Só deve haver uma instância do jogo (Singleton).
 				- A SDL é iniciada.
-				- A janela é criada com o o títlulo title, com dimensões width x height.
-				- O SDL_Renderer é inicializado.
 				- O mixer é inicializado.
 				- O sistema de áudio é inicializado (é uma inicialização diferente do mixer)
 				- O subsistema de fontes é inicializado.
@@ -55,7 +54,7 @@ class Game {
 			\brief Destrutor
 			
 			A pilha de estados é esvaziada. Se tiver algum estado em storedState ele será deletado.
-			O ClearResources é chamado e os sistemas da SDL que foram inicializados são destruídos na ordem inversa em que foram inicializados. Par garantir que primeiro os subsistemas que não tem dependêntes sejam desalocados primeiros.
+			O ClearResources é chamado e os sistemas da SDL que foram inicializados são destruídos na ordem inversa em que foram inicializados. Para garantir que primeiro os subsistemas que não tem dependêntes sejam desalocados primeiros.
 		*/
 		~Game();
 		/**
@@ -65,13 +64,6 @@ class Game {
 			Esquema básico do singleton. Retorna instância do singleton. Não se faz a chegagem da existência da instancia por motivos cronológicos (a primeira linha da main deve criar uma instância de Game).
 		*/
 		static Game& GetInstance(void);
-		/**
-			\brief Obtém referência do SDL_Renderer
-			\return Referência para SDL_Renderer
-
-			Retorna a referência do SDL_Renderer do Game
-		*/
-		SDL_Renderer* GetRenderer(void) const;
 		/**
 			\brief Obtém estado corrente do jogo.
 			\return Estado corrente do jogo.
@@ -113,13 +105,6 @@ class Game {
 		*/
 		float GetDeltaTime(void) const;
 		/**
-			\brief Informa as dimensões da janela corrente
-			\return Veja a descrição.
-
-			Retorna o intervalo de tempo do último frame ao atual calculado anteriormente pelo CalculateDeltaTime.
-		*/
-		Vec2 GetWindowDimensions(void) const;
-		/**
 			\brief Altera o valor do limite de framerate
 			\param signed long int newMaxFramerate o novo valor máximo a ser usado controle de framerate
 
@@ -155,67 +140,6 @@ class Game {
 		*/
 		bool IsFramerateLimited(void) const;
 		/**
-			\brief Obtém referência do SDL_Window
-			\return Referncia para SDL_Window
-
-			Retorna a referência do SDL_Window do Game
-		*/
-		SDL_Window* GetWindow(void) const;
-		/**
-			\brief Define as dimensões da janela corrente
-			\param Vec2 size Vec2(x, y) que representa os novos tamanhos da janela.
-
-			Altera as dimensões da janela de acordo com o tamanho (width, height) recebido.
-		*/
-		void SetWindowDimensions(Vec2);
-		/**
-			\brief Define a janela como tela cheia
-			\param bool isFullScreen Flag que determina se a janela deve ser fullscreen ou windowed.
-
-			Define a janela como tela cheia (true) ou windowed (false) dependendo da flag recebida.
-		*/
-		void SetWindowFullscreen(bool);
-		/**
-			\brief Define se a janela deve ser maximizada
-
-			Define se a janela deve ter seu tamanho máximo sem torná-la tela cheia.
-		*/
-		void SetWindowMaximized(void);
-		/**
-			\brief Define se a janela deve ter bordas
-			\param bool isBorderless Flag que determina se a janela deve ter ou não bordas.
-
-			Define se a janela deve ter bordas (false) ou não (true) de acordo com a flag recebida.
-		*/
-		void SetWindowBorderless(bool);
-		/**
-			\brief Reposiciona a janela
-
-			Posiciona a janela no centro da tela.
-		*/
-		void SetWindowCentered(void);
-		/**
-			\brief Informa se a janela está em tela cheia.
-			\return bool True para sim e false para não.
-
-			Retorna true se a janela estiver no modo tela cheia ou false se a janela não estiver em tela cheia.
-		*/
-		bool GetWindowFullscreen(void) const;
-		/**
-			\brief Informa se a janela está em seu tamanho máximo.
-			\return bool True para sim e false para não.
-
-			Retorna true se a janela maximizada ou false se não estiver maximizada.
-		*/
-		bool GetWindowMaximized(void) const;
-		/**
-			\brief Informa se a janela tem bordas.
-			\return bool True para sim e false para não.
-
-			Retorna true se a janela estiver sem bordas ou false se estiver com bordas.
-		*/
-		bool GetWindowBorderless(void) const;
-		/**
 			\brief Obtém timeStamp atual.
 
 			Retorna o timestamp atual. 
@@ -242,13 +166,12 @@ class Game {
 		float dt;/**< Armazena o intervalo de tempo em segundos desde o último frame. Esse valor é calculado a partir da diferença entre o frameStart com o SDL_GetTicks.*/
 		static Game* instance;/**< Instância estática do Game. Esquema básico de singleton.*/
 		State* storedState;/**< Armazena o estado que deve ser empilhado no fim do frame atual. Isso não pode acontecer no meio do frame para não gerar inconsistências.*/
-		SDL_Window* window;/**< Ponteiro para SDL_Window do game.*/
-		SDL_Renderer* renderer;/**< Ponteiro para o SDL_renderer do jogo.*/
 		std::stack<std::unique_ptr<State>> stateStack;/**< Pilha de estados.*/
 		InputManager &inputManager;/**< Gerenciador de entradas do usuário.*/
 		unsigned int maxFramerate;/**< Armazena o limite superior do framerate*/
 		float frameDuration;/**< Duração mínima de cada frame*/
 		bool capFramerate;/**< Flag para decidir se o framerate do jogo será limitado a um valor máximo ou não.*/
+		Window window;/**< Objeto que armazena a janela do jogo*/
 };
 
 #endif // __GAME_HPP__

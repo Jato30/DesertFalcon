@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rect_2ehpp',['Rect.hpp',['../Rect_8hpp.html',1,'']]],
-  ['resources_2ehpp',['Resources.hpp',['../Resources_8hpp.html',1,'']]]
+  ['inputmanager_2ecpp',['InputManager.cpp',['../InputManager_8cpp.html',1,'']]],
+  ['inputmanager_2ehpp',['InputManager.hpp',['../InputManager_8hpp.html',1,'']]]
 ];

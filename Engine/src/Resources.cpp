@@ -1,6 +1,6 @@
 #include "Resources.hpp"
 #include "Error.hpp"
-#include "Game.hpp"
+#include "Window.hpp"
 
 std::unordered_map<string, std::shared_ptr<SDL_Texture>> Resources::imageTable;
 std::unordered_map<string, std::shared_ptr<Mix_Music>> Resources::musicTable;
@@ -21,7 +21,7 @@ int Resources::soundVolume = 16;
 std::shared_ptr<SDL_Texture> Resources::GetImage(string file) {
 	SDL_Texture* ret;
 	if(imageTable.end() == imageTable.find(file)) {
-		ret=IMG_LoadTexture(Game::GetInstance().GetRenderer(), file.c_str());
+		ret = IMG_LoadTexture(Window::GetInstance().GetRenderer(), file.c_str());
 		if(nullptr == ret) {
 			Error(IMG_GetError());
 		}
