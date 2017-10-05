@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['gameobject',['GameObject',['../classGameObject.html',1,'']]]
+  ['collision',['Collision',['../classCollision.html',1,'']]],
+  ['color',['Color',['../structColor.html',1,'']]]
 ];

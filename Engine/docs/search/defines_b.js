@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['up_5farrow_5fkey',['UP_ARROW_KEY',['../InputManager_8hpp.html#ad411242de334297d01bdadac8f47e90b',1,'InputManager.hpp']]]
+  ['temp_5freport_5fi_5fwas_5fhere',['TEMP_REPORT_I_WAS_HERE',['../Error_8hpp.html#a460a42aaa4200700dfb4a73f852e93b8',1,'Error.hpp']]],
+  ['text_5ffrequency',['TEXT_FREQUENCY',['../Text_8hpp.html#a51c895f669b6bbf3a538dd9b2f987549',1,'Text.hpp']]]
 ];

@@ -1,10 +1,16 @@
 var searchData=
 [
-  ['rect',['Rect',['../classRect.html#a62fb6094640e8a5a9969382d404e9d5e',1,'Rect::Rect(void)'],['../classRect.html#a21e3f21b1579b6aea19ea88d89c019ef',1,'Rect::Rect(float x, float y, float w, float h)']]],
-  ['remaketexture',['RemakeTexture',['../classText.html#a5c794eef4ba7e0bd09a3039835f30e48',1,'Text']]],
-  ['render',['Render',['../classGameObject.html#a1ff163f6a549ec1ba0692324236b4ef9',1,'GameObject::Render()'],['../classSprite.html#a89931d91da347fe55a9890c4f52d2baf',1,'Sprite::Render()'],['../classText.html#a304080eddf6f5925fd4ae3dc1ffa49ae',1,'Text::Render()']]],
-  ['requestdelete',['RequestDelete',['../classGameObject.html#a8957226422c2d0141fca056aca417c5b',1,'GameObject']]],
-  ['resources',['Resources',['../classResources.html#ab09435991b8c485f92e0aa1fd00828b9',1,'Resources']]],
-  ['restart',['Restart',['../classTimer.html#abd8c2f405fff4f81f39e651a362b4f60',1,'Timer']]],
-  ['rotate',['Rotate',['../classVec2.html#ad44390a0a8feb8958394dbd4db84bda8',1,'Vec2']]]
+  ['open',['Open',['../classSprite.html#a3b05925d44fbfa07250cde1ca0d16726',1,'Sprite']]],
+  ['operator_20sdl_5fcolor',['operator SDL_Color',['../structColor.html#a36513ebec189c80a8e0395a0e95c0f95',1,'Color']]],
+  ['operator_20sdl_5frect',['operator SDL_Rect',['../classRect.html#ad2c298fcd6a19db8d0707c335b45bbb0',1,'Rect']]],
+  ['operator_20vec2',['operator Vec2',['../classRect.html#a1b49ca2d6d13628fce9b25134a771406',1,'Rect']]],
+  ['operator_21_3d',['operator!=',['../classVec2.html#a8ddf48853832ad35fb4d35694d8c62d3',1,'Vec2']]],
+  ['operator_2a',['operator*',['../classRect.html#a23520f8724f12e0e073d94d876d8e403',1,'Rect::operator*()'],['../classVec2.html#a1ca01969df1eca9b9edf140c8f72d10d',1,'Vec2::operator*()']]],
+  ['operator_2b',['operator+',['../classRect.html#a3417e3dfee7baa64791e6ce62e719c1f',1,'Rect::operator+()'],['../classVec2.html#aaea145fef7ab8c83b58455d1b9790960',1,'Vec2::operator+()']]],
+  ['operator_2b_3d',['operator+=',['../classVec2.html#ae7aa55c56ed024029ee6f450b014dcee',1,'Vec2']]],
+  ['operator_2d',['operator-',['../classRect.html#a7f18f28ce90988413f0f7eba2668762d',1,'Rect::operator-()'],['../classVec2.html#aec9ade724e743e3e7ff5e7def48ee18d',1,'Vec2::operator-(Vec2 const &amp;b) const'],['../classVec2.html#a73daeddb93e56a6914e23d843a1df58b',1,'Vec2::operator-()']]],
+  ['operator_2d_3d',['operator-=',['../classVec2.html#a04202314b5513694ea805e43bdd754f6',1,'Vec2']]],
+  ['operator_2f',['operator/',['../classVec2.html#a7b960ce583e7c29f62b938fbde2d50a5',1,'Vec2']]],
+  ['operator_3d',['operator=',['../classRect.html#aca144c3e9d36600106932e22a5659513',1,'Rect::operator=()'],['../classVec2.html#a5f11bf2c956c09d90d515bbbf46337ec',1,'Vec2::operator=(Vec2 const &amp;b)'],['../classVec2.html#a2553bedb7236cd02d60e1624f6bb084e',1,'Vec2::operator=(const int b)']]],
+  ['operator_3d_3d',['operator==',['../classVec2.html#ac99d7e9dbcdd2350f599a30e0d4a48d9',1,'Vec2']]]
 ];
