@@ -36,7 +36,7 @@ Após instalar as dependências, baixe o projeto no github e rode o comando:
 O executável terá o nome JOGO.exe
 
 
-Link para documentação doxygen: [https://anders1232.github.io/EngineIDJ](https://anders1232.github.io/EngineIDJ)
+Link para documentação doxygen: [https://jato30.github.io/DesertFalcon](https://jato30.github.io/DesertFalcon)
 
 
 ----------------------------------
