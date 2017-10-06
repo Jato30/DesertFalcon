@@ -2,10 +2,44 @@
 
 Repositório do jogo estilo Desert Falcon do Atari para a disciplina de TP2 2017-2. Atualmente sem licença
 
-Link para documentação doxygen: 
 
-Acompanhamento do projeto: 
 
+**Desert Falcon** é baseado num clássico do atari em que você é um falcão e deve voar pelo deserto capturando hieros para juntar pontos.  
+  
+#### Objetivo do jogo:
+Fazer a maior quantidade dde pontos possível.
+
+#### Controles:
+- `A D` para movimentação do falcon
+- `W S` para movimentação da altura do falcon
+
+#### Dependências:
+- SDL2
+- SDL2_mixer
+- SDL2_TTF
+- SDL2_image
+- MingW **(Windows)**
+
+## Como compilar
+**No linux:**
+Após instalar as dependências, baixe o projeto no github e rode o comando:  
+
+`make release`
+
+O executável terá o nome JOGO
+
+**No windows:**
+Após instalar as dependências, baixe o projeto no github e rode o comando:
+
+`mingw32-make release`
+
+O executável terá o nome JOGO.exe
+
+
+Link para documentação doxygen: [https://anders1232.github.io/EngineIDJ](https://anders1232.github.io/EngineIDJ)
+
+
+----------------------------------
 Sistema de uso do repositório (em adaptação):
 - Branch dev saindo da master.
 - Um branch para cada feature saindo de dev. O branch será nomeado "feature/*", em que "*" será o nome da feature. Exemplo "feature/EndScreen".
