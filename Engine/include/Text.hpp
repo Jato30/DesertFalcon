@@ -79,12 +79,12 @@ class Text {
 		void Update(float);
 		/**
 			\brief Renderiza Texto.
-			\param int CameraX Posição X da câmera (padrão = 0).
-			\param int CameraY Posição Y da câmera (padrão = 0).
+			\param int posX Posição X a ser renderizado (padrão = 0).
+			\param int posY Posição Y a ser renderizado (padrão = 0).
 
 			Renderiza o texto na posição informada. Checa se o texto deve piscar e trata esta piscagem com o tempo textTime.
 		*/
-		void Render(int = 0, int = 0) const;
+		void Render(void) const;
 		/**
 			\brief Altera a posição do texto na tela
 			\param int x Posição X.

@@ -38,7 +38,7 @@ void Text::Update(float dt){
 	}
 }
 
-void Text::Render(int cameraX, int cameraY) const {
+void Text::Render(void) const {
 	if(isStrobe ? textTime.Get() < timeShown : true){
 		SDL_Rect srcRect;
 		srcRect.x= 0;

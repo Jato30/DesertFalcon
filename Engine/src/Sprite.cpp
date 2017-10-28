@@ -160,3 +160,9 @@ void Sprite::SetFrameCount(int frameCount) {
 void Sprite::SetFrameTime(float frameTime) {
 	this->frameTime=frameTime;
 }
+
+void Sprite::SetSize(Vec2 size){
+	height = size.x;
+	width = size.y;
+}
+

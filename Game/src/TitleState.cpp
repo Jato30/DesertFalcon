@@ -1,8 +1,10 @@
 #include "TitleState.hpp"
 
 TitleState::TitleState() : State(), bg("./resources/img/titlescreen.png"){
-    pressSpace = new Text("./resources/font/Call me maybe.ttf", 36, Text::TextStyle::SOLID, "Press SPACE button to start", ColorName::WHITE, new Timer());
-    pressSpace->SetPos(512, 500, true);
+    Vec2 windowPos = Window::GetInstance().GetWindowDimensions();
+    pressSpace = new Text("./resources/font/Call me maybe.ttf", 36, Text::TextStyle::BLENDED, "Press SPACE button to start", ColorName::WHITE, new Timer(), true);
+    pressSpace->SetPos(windowPos.x / 2, windowPos.y / 2, true);
+    bg.SetSize(windowPos);
 }
 
 void TitleState::Update(float dt){
@@ -11,7 +13,7 @@ void TitleState::Update(float dt){
         quitRequested = true;
     }
 
-    pressSpace->Render();
+    pressSpace->Update(dt);
 
     if(ActionManager::StartAction()){
         popRequested = true;
@@ -22,6 +24,7 @@ void TitleState::Update(float dt){
 
 void TitleState::Render(void) const{
     bg.Render(Rect(0., 0., bg.GetHeight(), bg.GetWidth()));
+    pressSpace->Render();
 }
 
 void TitleState::LoadAssets(void) const{

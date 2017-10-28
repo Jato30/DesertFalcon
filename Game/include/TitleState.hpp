@@ -26,5 +26,6 @@ class TitleState : public State{
 #include "Timer.hpp"
 #include "Rect.hpp"
 #include "Color.hpp"
+#include "Window.hpp"
 
 #endif // __TITLESTATE_HPP__
