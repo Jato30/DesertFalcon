@@ -1,28 +1,29 @@
 #include "Text.hpp"
 
-Text::Text(string fontFile,
-			int fontSize,
-			TextStyle style,
-			SDL_Color color,
-			bool isStrobing,
-			int x,
-			int y)
-		: font(Resources::GetFont(fontFile, fontSize)),
-		texture(nullptr),
-		text(" "),
-		style(style),
-		fontSize(fontSize),
-		color(color),
-		textTime(),
-		fontFile(fontFile),
-		isStrobe(isStrobing),
-		strobeFrequency(TEXT_FREQUENCY),
-		timeShown(MIN_TIME_SHOWN){
+Text::Text(string fontFile
+			, int fontSize
+			, TextStyle style
+			, string text
+			, Color color
+			, Timer* textTime
+			, bool isStrobing
+			, int x, int y)
+		: fontFile(fontFile)
+		, fontSize(fontSize)
+		, style(style)
+		, text(text)
+		, color(color)
+		, textTime()
+		, isStrobe(isStrobing)
+		, texture(nullptr)
+		, font(Resources::GetFont(fontFile, fontSize))
+		, strobeFrequency(TEXT_FREQUENCY)
+		, timeShown(MIN_TIME_SHOWN) {
 
-	box.x= x;
-	box.y= y;
+	box.x = x;
+	box.y = y;
 	RemakeTexture();
-}
+ }
 
 Text::~Text() {
 	if(nullptr != texture) {
@@ -44,7 +45,7 @@ void Text::Render(int cameraX, int cameraY) const {
 		srcRect.y= 0;
 		srcRect.w= box.w;
 		srcRect.h= box.h;
-		SDL_Rect destRect= (SDL_Rect)(box- Vec2(cameraX, cameraY));
+		SDL_Rect destRect= (SDL_Rect)(box);
 	//	std::cout << WHERE << " srcRect.x=" << srcRect.x<< " srcRect.y=" << srcRect.y<< " srcRect.w=" << srcRect.w<< " srcRect.h=" << srcRect.h << "\n";
 	//	std::cout << WHERE << " destRect.x=" << destRect.x<< " destRect.y=" << destRect.y<< " destRect.w=" << destRect.w<< " destRect.h=" << destRect.h << "\n";
 		if(0 !=SDL_RenderCopy(Window::GetInstance().GetRenderer(), texture, &srcRect, &destRect) ) {
