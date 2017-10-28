@@ -163,7 +163,7 @@ class Text {
 
 
 #include "Resources.hpp"
-#include "Game.hpp"
+#include "Window.hpp"
 #include "Error.hpp"
 
 #endif // __TEXT_HPP__
