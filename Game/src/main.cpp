@@ -8,7 +8,7 @@ using std::cout;
 using std::endl;
 
 int main(int argc, char **argv) {
-	Game game(std::string("Desert Falcon"), 1024, 600);
+	Game game(std::string("Desert Falcon"), 800, 600);
 	game.Push(new TitleState());
 	game.Run();
 	return 0;

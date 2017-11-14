@@ -1,10 +1,11 @@
 #include "Falcon.hpp"
 
 Falcon::Falcon(int hitpoints) : GameObject()
-          , sp("./resources/img/falcon.png")
+          , sp("./resources/img/penguin_sheet.png",false, 0.1, 4)
           , hp(hitpoints)
           , speed(0., 0.) {
 
+     sp.SetScale(0.7);
      rotation = 0;
      box = Vec2(20, 0);
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));

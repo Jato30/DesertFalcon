@@ -1,6 +1,6 @@
 #include "StageState.hpp"
 
-StageState::StageState() : State()/*, bg("./resources/img/ocean.jpg")*/, newHiero(){
+StageState::StageState() : State(), bg("./resources/img/paisagem-do-deserto.jpg"), newHiero(){
     AddObject(new Falcon(PLAYER_BASE_LIFE));
     quitRequested = false;
 }
@@ -42,7 +42,8 @@ void StageState::Update(float dt){
 }
 
 void StageState::Render(void) const {
-    // bg.Render(Rect(0, 0, bg.GetWidth(), bg.GetHeight()));
+    Vec2 windowPos = Window::GetInstance().GetWindowDimensions();
+    bg.Render(Rect(0, 0, windowPos.x, windowPos.y));
 
     RenderArray();
 }
