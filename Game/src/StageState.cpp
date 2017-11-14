@@ -49,7 +49,7 @@ void StageState::Render(void) const {
 }
 
 void StageState::LoadAssets(void) const{
-    Resources::GetImage("./resources/img/ocean.jpg");
+    Resources::GetImage("./resources/img/paisagem-do-deserto.jpg");
     Resources::GetImage("./resources/img/hiero.png");
 }
 
