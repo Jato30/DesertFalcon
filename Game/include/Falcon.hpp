@@ -97,6 +97,7 @@ class Falcon : public GameObject {
 #include "ActionManager.hpp"
 #include "Window.hpp"
 #include "Hiero.hpp"
+#include "InputManager.hpp"
 
 #endif // __FALCON_HPP__
 

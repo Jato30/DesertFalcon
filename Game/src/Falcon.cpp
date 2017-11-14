@@ -2,13 +2,16 @@
 
 Falcon::Falcon(int hitpoints) : GameObject()
           , sp("./resources/img/penguin_sheet.png",false, 0.1, 4)
+          , spShade("./resources/img/penguin_shade.png",false, 0.01, 2)
           , hp(hitpoints)
+          , height(0)
           , speed(0., 0.) {
 
      sp.SetScale(0.7);
-     rotation = 0;
-     box = Vec2(20, 0);
+     spShade.SetScale(0.7);
+     rotation = -30;
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));
+     box = Vec2((Window::GetInstance().GetWindowDimensions().x / 2) - box.w, Window::GetInstance().GetWindowDimensions().y - box.h);
 }
 
 Falcon::~Falcon(){
@@ -17,32 +20,44 @@ Falcon::~Falcon(){
 
 void Falcon::Update(float dt){
      sp.Update(dt);
+     spShade.Update(dt);
 
+     Vec2 windowSize = Window::GetInstance().GetWindowDimensions();
 
      // Movimento
+     if(InputManager::GetInstance().KeyPress('w') || InputManager::GetInstance().KeyPress(SDLK_UP)){
+          if(height < 2){
+               height++;
+          }
+     }
+     if(InputManager::GetInstance().KeyPress('s') || InputManager::GetInstance().KeyPress(SDLK_DOWN)){
+          if(height > 0){
+               height--;
+          }
+     }
      if(ActionManager::LeftArrowAction()){
-          speed.y = -LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
+          speed.x = -LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
+          speed.y = -LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt;
      }
-     else if(ActionManager::RightArrowAction()){
-          speed.y = LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
+     if(ActionManager::RightArrowAction()){
+          speed.x = LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
+          speed.y = LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt;
      }
+
      box = box + speed;
-     speed = 0;
 
 
      // Out of bounds
-     if((box.x + box.w) > Window::GetInstance().GetWindowDimensions().x){
-          box.x = -box.w + Window::GetInstance().GetWindowDimensions().x;
+     if(box.y + box.h > windowSize.y){
+          box.x = (windowSize.x / 2) - box.w;
+          box.y = windowSize.y - box.h;
      }
-     if((box.y + box.h) > Window::GetInstance().GetWindowDimensions().y){
-          box.y = -box.h + Window::GetInstance().GetWindowDimensions().y;
-     }
-     if(box.x < 0){
+     else if(box.x < 0){
           box.x = 0;
+          box.y = windowSize.y / 2;
      }
-     if(box.y < 0){
-          box.y = 0;
-     }
+
+     speed = 0;
 
 
      // Verifica morte
@@ -53,7 +68,10 @@ void Falcon::Update(float dt){
 }
 
 void Falcon::Render(void){
-     sp.Render(box, rotation);
+     Rect falconBox (box);
+     falconBox.y -= (box.h + 20) * height; 
+     spShade.Render(box, rotation);
+     sp.Render(falconBox, rotation);
 }
 
 bool Falcon::IsDead(void){
@@ -66,7 +84,9 @@ void Falcon::RequestDelete(void){
 
 void Falcon::NotifyCollision(GameObject& object){
      if(object.Is("Hiero")){
-          Damage(HIERO_DAMAGE);
+          if(height == 0){
+               Damage(HIERO_DAMAGE);
+          }
 	}
 }
 
