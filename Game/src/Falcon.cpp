@@ -35,28 +35,43 @@ void Falcon::Update(float dt){
                height--;
           }
      }
+
+
+     // Offset para compensar Width e Height
+     Vec2 offset;
+     Vec2 max ((Window::GetInstance().GetWindowDimensions().x / 2) - box.w, Window::GetInstance().GetWindowDimensions().y - box.h);
+     offset = Vec2(((box.x / max.x) * box.w) / max.x, ((box.y / max.y) * box.h) / max.y);
+
      if(ActionManager::LeftArrowAction()){
-          speed.x = -LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
-          speed.y = -LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt;
+          speed.x = -((LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt) + offset.x);
+          speed.y = -((LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt) + offset.y);
+          if(box.x < 0){
+               speed = 0;
+          }
      }
+     
      if(ActionManager::RightArrowAction()){
-          speed.x = LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
-          speed.y = LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt;
+          offset = Vec2(1 - offset.x, 1 - offset.y);
+          speed.x = (LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt) + offset.x;
+          speed.y = (LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt) + offset.y;
+          if(box.y + box.h > windowSize.y){
+               speed = 0;
+          }
      }
 
-     box = box + speed;
 
 
      // Out of bounds
-     if(box.y + box.h > windowSize.y){
-          box.x = (windowSize.x / 2) - box.w;
-          box.y = windowSize.y - box.h;
-     }
-     else if(box.x < 0){
-          box.x = 0;
-          box.y = windowSize.y / 2;
-     }
+     // if(box.y + box.h > windowSize.y){
+          // box.x = (windowSize.x / 2) - box.w;
+          // box.y = windowSize.y - box.h;
+     // }
+     // else if(box.x < 0){
+          // box.x = 0;
+          // box.y = windowSize.y / 2;
+     // }
 
+     box = box + speed;
      speed = 0;
 
 
