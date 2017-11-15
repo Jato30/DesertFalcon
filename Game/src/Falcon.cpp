@@ -1,10 +1,10 @@
 #include "Falcon.hpp"
 
 Falcon::Falcon(int hitpoints) : GameObject()
+          , height(0)
           , sp("./resources/img/penguin_sheet.png",false, 0.1, 4)
           , spShade("./resources/img/penguin_shade.png",false, 0.01, 2)
           , hp(hitpoints)
-          , height(0)
           , speed(0., 0.) {
 
      sp.SetScale(0.7);

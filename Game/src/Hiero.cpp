@@ -1,7 +1,7 @@
 #include "Hiero.hpp"
 
 Hiero::Hiero(Vec2 pos) : GameObject(), sp("./resources/img/hiero.png"), speed(0., 0.) {
-     rotation = 0;
+     rotation = -30;
      box = Vec2(pos.x, pos.y);
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));
 }
@@ -14,7 +14,8 @@ void Hiero::Update(float dt){
      sp.Update(dt);
 
      // Movimento
-     speed.x = -LINEAR_SPEED * dt;
+     speed.x = -LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt;
+     speed.y = LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt;
      box = box + speed;
 
      // Out of bounds

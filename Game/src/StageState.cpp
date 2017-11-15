@@ -15,7 +15,12 @@ void StageState::Update(float dt){
     // Novo Hiero
     newHiero.Update(dt);
     if(newHiero.Get() > HIERO_COOLDOWN){
-        AddObject(new Hiero(Vec2(Window::GetInstance().GetWindowDimensions().x, rand() % (int) Window::GetInstance().GetWindowDimensions().y)));
+        // Escolhe uma reta aleatória entre (x: meia tela ~ tela, y: 0 ~ 0) e (x: tela ~ tela, y: 0 ~ meia tela)
+        Vec2 randLine;
+        randLine = rand() % 2 == 0 ? Vec2((Window::GetInstance().GetWindowDimensions().x / 2), 0) : Vec2(Window::GetInstance().GetWindowDimensions().x, (Window::GetInstance().GetWindowDimensions().y / 2));
+        // Escolhe um ponto aleatório entre a reta escolhida
+        Vec2 hieroPos((rand() % ((int) (Window::GetInstance().GetWindowDimensions().x - randLine.x) + 1)) + randLine.x, rand() % ((int) randLine.y + 1));
+        AddObject(new Hiero(hieroPos));
         newHiero.Restart();
     }
 
