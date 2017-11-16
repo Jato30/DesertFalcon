@@ -84,11 +84,9 @@ class Falcon : public GameObject {
 			Decresce hp com a quantidade de damage recebido.
 		*/
           void Damage(int);
-		int height;/**< Altura do Falcon.*/
           
      private:
           Sprite sp;/**< Spritesheet de Falcon.*/
-		Sprite spShade;/**< Spritesheet da sombra de Falcon.*/
           int hp;/**< Vida atual.*/
           Vec2 speed;/**< Velocidade de x e y (x, y) em que box deve se deslocar.*/
 };
@@ -97,7 +95,6 @@ class Falcon : public GameObject {
 #include "ActionManager.hpp"
 #include "Window.hpp"
 #include "Hiero.hpp"
-#include "InputManager.hpp"
 
 #endif // __FALCON_HPP__
 
