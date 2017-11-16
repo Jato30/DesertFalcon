@@ -9,7 +9,7 @@ Falcon::Falcon(int hitpoints) : GameObject()
 
      sp.SetScale(0.7);
      spShade.SetScale(0.7);
-     rotation = -30;
+     rotation = -38.264;
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));
      box = Vec2((Window::GetInstance().GetWindowDimensions().x / 2) - box.w, Window::GetInstance().GetWindowDimensions().y - box.h);
 }
@@ -35,25 +35,17 @@ void Falcon::Update(float dt){
                height--;
           }
      }
-
-
-     // Offset para compensar Width e Height
-     Vec2 offset;
-     Vec2 max ((Window::GetInstance().GetWindowDimensions().x / 2) - box.w, Window::GetInstance().GetWindowDimensions().y - box.h);
-     offset = Vec2(((box.x / max.x) * box.w) / max.x, ((box.y / max.y) * box.h) / max.y);
-
      if(ActionManager::LeftArrowAction()){
-          speed.x = -((LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt) + offset.x);
-          speed.y = -((LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt) + offset.y);
+          speed.x = -LINEAR_SPEED * FALCON_SPEED_PROPORTION_X * dt;
+          speed.y = -LINEAR_SPEED * FALCON_SPEED_PROPORTION_Y  * dt;
           if(box.x < 0){
                speed = 0;
           }
      }
      
      if(ActionManager::RightArrowAction()){
-          offset = Vec2(1 - offset.x, 1 - offset.y);
-          speed.x = (LINEAR_SPEED * FALCON_SPEED_PROPORTION * dt) + offset.x;
-          speed.y = (LINEAR_SPEED * (1 / FALCON_SPEED_PROPORTION) * dt) + offset.y;
+          speed.x = LINEAR_SPEED * FALCON_SPEED_PROPORTION_X * dt;
+          speed.y = LINEAR_SPEED * FALCON_SPEED_PROPORTION_Y  * dt;
           if(box.y + box.h > windowSize.y){
                speed = 0;
           }
