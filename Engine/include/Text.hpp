@@ -9,8 +9,6 @@
 
 #include "Rect.hpp"
 #include "Timer.hpp"
-#include "Color.hpp"
-
 #include <memory>
 #include <string>
 
@@ -19,27 +17,26 @@ using std::string;
 #define MIN_TIME_SHOWN (0.15)
 #define TEXT_FREQUENCY (0.25)
 
+/**
+	\brief Informa como o texto será rendeizaddo.
+
+	Informa os modos de renderizar um texto.
+*/
+enum TextStyle {
+	SOLID,/**< O texto é renderizado diretamente, sem nenhum tipo de tratamento visual.*/
+	SHARED,/**< o texto é renderizado em um retângulo da cor dada em um argumento SDL_Color no hora de renderizar.*/
+	BLENDED/**< Cria um texto com as bordas suavizadas (usando o canal alpha), para que ele se adapte melhor à região da tela onde for renderizado. É mais custoso de se renderizar que os outros dois, mas faz
+uma diferença perceptível.*/
+};
 
 /**
- \brief Classe que modela textos.
- 
- Os textos são lidos a partir de arquivos ttf, renderizados com base em um TextStyle, com um tamanho pré-informado e a partir de uma coordena (x, y).
- Internamente gerencia uma textura desse texto pré-renderizado.
- */
+	\brief Classe que modela textos.
+
+	Os textos são lidos a partir de arquivos ttf, renderizados com base em um TextStyle, com um tamanho pré-informado e a partir de uma coordena (x, y).
+	Internamente gerencia uma textura desse texto pré-renderizado.
+*/
 class Text {
 	public:
-		/**
-			\brief Informa como o texto será rendeizaddo.
-		
-			Informa os modos de renderizar um texto.
-		*/
-		enum TextStyle {
-			SOLID,/**< O texto é renderizado diretamente, sem nenhum tipo de tratamento visual.*/
-			SHARED,/**< o texto é renderizado em um retângulo da cor dada em um argumento SDL_Color no hora de renderizar.*/
-			BLENDED/**< Cria um texto com as bordas suavizadas (usando o canal alpha), para que ele se adapte melhor à região da tela onde for renderizado. É mais custoso de se renderizar que os outros dois, mas faz
-		uma diferença perceptível.*/
-		};
-
 		/**
 			\brief Construtor
 			\param string fontFile Arquivo ttf da fonte.
@@ -57,9 +54,7 @@ class Text {
 			string fontFile,
 			int fontSize,
 			TextStyle style,
-			string text,
-			Color color,
-			Timer* textTime,
+			SDL_Color color,
 			bool isStrobing = false,
 			int x = 0,
 			int y = 0
@@ -79,12 +74,12 @@ class Text {
 		void Update(float);
 		/**
 			\brief Renderiza Texto.
-			\param int posX Posição X a ser renderizado (padrão = 0).
-			\param int posY Posição Y a ser renderizado (padrão = 0).
+			\param int CameraX Posição X da câmera (padrão = 0).
+			\param int CameraY Posição Y da câmera (padrão = 0).
 
 			Renderiza o texto na posição informada. Checa se o texto deve piscar e trata esta piscagem com o tempo textTime.
 		*/
-		void Render(void) const;
+		void Render(int = 0, int = 0) const;
 		/**
 			\brief Altera a posição do texto na tela
 			\param int x Posição X.
@@ -95,7 +90,7 @@ class Text {
 			Altera a posição do texto na tela. Se centerX for verdadeiro o argumento y é ignorado. Caso contrário o argumento x será usado como coordenada x a partir do qual o texto será renderizado.
 			Altera a posição do texto na tela. Se centerY for verdadeiro o argumento y é ignorado. Caso contrário o argumento y será usado como coordenada y a partir do qual o texto será renderizado.
 		*/
-		void SetPos(int, int, bool = false, bool = false);
+		void SetPos(int x, int y, bool = false, bool = false);
 		/**
 			\brief Altera o texto.
 			\param string text Novo texto.
@@ -152,23 +147,23 @@ class Text {
 			Se existir um textura anteriormente, esta é destruída. Então uma nova é feita com base no estado atual do Text.
 		*/
 		void RemakeTexture(void);
-		string fontFile; /**< String com o nome do arquivo com a fonte. É necessário para o caso em que a fonte seja modificada.*/
-		int fontSize;/**< Tamanho da fonte do texto.*/
-		TextStyle style;/**< Forma com a qual o texto está texturizado*/
+		std::shared_ptr<TTF_Font> font;/**< Ponteiro para a fonte.*/
+		SDL_Texture* texture;/**< O texto para exibir na tela precisa ser texturizado. Essa variável contém a textura do texto.*/
 		string text;/**< String com o texto do Text.*/
+		TextStyle style;/**< Forma com a qual o texto está texturizado*/
+		int fontSize;/**< Tamanho da fonte do texto.*/
 		SDL_Color color;/**< Cor do texto,*/
 		Timer textTime;/**< Tempo para piscagem do texto*/
-		bool isStrobe;/**< Flag que determina se o texto deve piscar*/
 		Rect box;/**< Posição a partir da qual o texto deve ser renderizado.*/
-		SDL_Texture* texture;/**< O texto para exibir na tela precisa ser texturizado. Essa variável contém a textura do texto.*/
-		std::shared_ptr<TTF_Font> font;/**< Ponteiro para a fonte.*/
+		string fontFile; /**< String com o nome do arquivo com a fonte. É necessário para o caso em que a fonte seja modificada.*/
+		bool isStrobe;/**< Flag que determina se o texto deve piscar*/
 		float strobeFrequency;/**< Tempo de um ciclo da piscagem. Seu valor é TEXT_FREQUENCY por padrão.*/
 		float timeShown;/**< Tempo em que o texto é mostrado na piscagem. Seu valor é MIN_TIME_SHOWN por padrão.*/
 };
 
 
 #include "Resources.hpp"
-#include "Window.hpp"
+#include "Game.hpp"
 #include "Error.hpp"
 
 #endif // __TEXT_HPP__
