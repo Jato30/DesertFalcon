@@ -173,6 +173,13 @@ class Sprite {
 			Atribui a scaleY produto de scaleX pelo argumento e atribui a scaleX produto de scaleX pelo argumento.
 		*/
 		void Scale(float);
+		/**
+			\brief Altera o tamanho vertical e horizontal da sprite.
+			\param Vec2 size Valor para o qual o tamanho vertical e horizontal devem ser alteradas.
+
+			Atribui a height o tamanho recebido em x de Vec2 e atribui a width o tamanho recebido em x de Vec2.
+		*/
+		void SetSize(Vec2);
 		Color colorMultiplier;/**< A cor a ser usada para multiplicar a sprite.*/
 		SDL_BlendMode blendMode;/**< O modo de mistura da sprite com as inferiores.*/
 	private:

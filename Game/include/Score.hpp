@@ -31,3 +31,4 @@ class Score{
 #include <string>
 
 #endif // __SCORE__HPP__
+
