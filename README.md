@@ -20,7 +20,7 @@ Fazer a maior quantidade dde pontos possível.
 - SDL2_TTF
 - SDL2_image
 - MingW **(Windows)**
-- Compilador g++ com padrão de codificação C++11
+- Compilador g++ versão 7.2 (com padrão de codificação C++11)
 
 ## Como compilar
 **No linux:**
