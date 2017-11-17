@@ -3,14 +3,17 @@
 StageState::StageState() : State(), bg("./resources/img/paisagem-do-deserto.jpg"), newHiero(){
     AddObject(new Falcon(PLAYER_BASE_LIFE));
     quitRequested = false;
+    Score::CreateInstance();
 }
 
 StageState::~StageState(){
     objectArray.clear();
+    Score::DeleteInstance();
 }
 
 void StageState::Update(float dt){
     UpdateArray(dt);
+    Score::Update(dt);
     
     // Novo Hiero
     newHiero.Update(dt);
@@ -49,6 +52,7 @@ void StageState::Update(float dt){
 void StageState::Render(void) const {
     Vec2 windowPos = Window::GetInstance().GetWindowDimensions();
     bg.Render(Rect(0, 0, windowPos.x, windowPos.y));
+    Score::Render();
 
     RenderArray();
 }

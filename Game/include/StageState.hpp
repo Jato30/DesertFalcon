@@ -10,6 +10,7 @@
 #include "Sprite.hpp"
 #include "State.hpp"
 #include "Timer.hpp"
+#include "Score.hpp"
 
 using std::vector;
 

@@ -93,6 +93,7 @@ void Falcon::NotifyCollision(GameObject& object){
      if(object.Is("Hiero")){
           if(height == 0){
                Damage(HIERO_DAMAGE);
+               Score::Increase(1);
           }
 	}
 }
