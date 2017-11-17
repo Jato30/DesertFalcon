@@ -1,6 +1,4 @@
 #include "InputManager.hpp"
-#include <string>
-#include "Error.hpp"
 
 InputManager::InputManager() : quitRequested(false), updateCounter(0), mouseX(0), mouseY(0), mouseScroolUpdate(0) {
 	memset(mouseState, 0, 6*sizeof(bool));
@@ -57,7 +55,7 @@ void InputManager::Update(){
 
 bool InputManager::KeyPress(int key) const{
 	try{
-		return(keyUpdate.at(key) == updateCounter && keyState.at(key));
+		return (keyState.at(key) && (keyUpdate.at(key) == updateCounter));
 	}
 	catch (const std::out_of_range& oor){
 		return false;
@@ -66,7 +64,7 @@ bool InputManager::KeyPress(int key) const{
 
 bool InputManager::KeyRelease(int key) const{
 	try{
-		return(keyUpdate.at(key) != updateCounter && !keyState.at(key));
+		return (!keyState.at(key) && (keyUpdate.at(key) != updateCounter));
 	}
 	catch (const std::out_of_range& oor){
 		return false;
@@ -75,7 +73,7 @@ bool InputManager::KeyRelease(int key) const{
 
 bool InputManager::IsKeyDown(int key) const{
 	try{
-		return(keyState.at(key) == true);
+		return (keyState.at(key) == true);
 	}
 	catch (const std::out_of_range& oor){
 		return false;
@@ -84,7 +82,7 @@ bool InputManager::IsKeyDown(int key) const{
 
 bool InputManager::IsKeyUp(int key) const{
 	try{
-		return(keyState.at(key) == false);
+		return (keyState.at(key) == false);
 	}
 	catch (const std::out_of_range& oor){
 		return false;
@@ -92,11 +90,11 @@ bool InputManager::IsKeyUp(int key) const{
 }
 
 bool InputManager::MousePress(int button) const{
-	return (mouseUpdate[button] == updateCounter && mouseState[button]);
+	return (mouseState[button] && (mouseUpdate[button] == updateCounter));
 }
 
 bool InputManager::MouseRelease(int button) const{
-	return (mouseUpdate[button] == updateCounter && !mouseState[button]);
+	return (!mouseState[button] && (mouseUpdate[button] == updateCounter));
 }
 
 bool InputManager::IsMouseDown(int button) const{
@@ -108,15 +106,15 @@ bool InputManager::IsMouseUp(int button) const{
 }
 
 int InputManager::GetMouseX() const{
-	return(mouseX);
+	return (mouseX);
 }
 
 int InputManager::GetMouseY() const{
-	return(mouseY);
+	return (mouseY);
 }
 
 bool InputManager::QuitRequested() const{
-	return(quitRequested);
+	return (quitRequested);
 }
 
 Vec2 InputManager::GetMousePos() const{

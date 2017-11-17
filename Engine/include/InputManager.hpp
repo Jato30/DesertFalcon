@@ -211,4 +211,7 @@ class InputManager {
 		Vec2 mouseScroolState;/**< Armazena a informação do último scroll feito no mouse.*/
 };
 
+#include <cstring>
+#include "Error.hpp"
+
 #endif // __INPUTMANAGER_HPP__
