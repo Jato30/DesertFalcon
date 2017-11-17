@@ -1,0 +1,11 @@
+digraph "Gráfico de Hierarquia de Classes"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="GameObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classGameObject.html"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="Falcon",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classFalcon.html",tooltip="Classe referente ao jogador (falcão). "];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Hiero",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classHiero.html",tooltip="Classe referente aos Hieros (coletáveis). "];
+}

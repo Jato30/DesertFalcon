@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['render',['Render',['../classFalcon.html#a5a35e6c77c9727e0ce21598e60d64960',1,'Falcon::Render()'],['../classHiero.html#a354b8098d61e20eb8d5012fef660bbdb',1,'Hiero::Render()'],['../classStageState.html#a8ee7e47b7e968774b72b65209f922165',1,'StageState::Render()']]],
-  ['requestdelete',['RequestDelete',['../classFalcon.html#a92733a81879c5af7c615f1be63ec3d31',1,'Falcon::RequestDelete()'],['../classHiero.html#aa318d02318f71d03c3d0fdb8295bea8e',1,'Hiero::RequestDelete()']]],
-  ['resume',['Resume',['../classStageState.html#a1ca42c08929c560284b04a08362e0c8c',1,'StageState']]]
+  ['pause',['Pause',['../classStageState.html#a7551ce8a236840e075f6f38f44140e59',1,'StageState']]],
+  ['player_5fbase_5flife',['PLAYER_BASE_LIFE',['../GameDefines_8hpp.html#adc39c949f52ea5556ed8782afb4fa9ad',1,'GameDefines.hpp']]]
 ];

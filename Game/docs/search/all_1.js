@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['damage',['Damage',['../classFalcon.html#acb421a5766f344dab3639136590f665d',1,'Falcon']]]
+  ['createinstance',['CreateInstance',['../classScore.html#a19de0ff574b04c1f0e565050c1a0acbc',1,'Score']]]
 ];

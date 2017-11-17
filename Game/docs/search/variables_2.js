@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['newhiero',['newHiero',['../classStageState.html#a5b09ce206e938c01274244f9d72898dc',1,'StageState']]]
+  ['istoshow',['isToShow',['../classScore.html#a8726f5fdaf8f0a45225068e52df95020',1,'Score']]]
 ];
