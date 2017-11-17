@@ -58,6 +58,8 @@ void StageState::Render(void) const {
 }
 
 void StageState::LoadAssets(void) const{
+    Resources::GetImage("./resources/img/penguin_sheet.png");
+    Resources::GetImage("./resources/img/penguin_shade.png");
     Resources::GetImage("./resources/img/paisagem-do-deserto.jpg");
     Resources::GetImage("./resources/img/hiero.png");
 }
