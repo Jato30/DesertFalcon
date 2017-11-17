@@ -12,6 +12,7 @@ Fazer a maior quantidade dde pontos possível.
 #### Controles:
 - `A D` para movimentação do falcon
 - `W S` para movimentação da altura do falcon
+- `Space bar` para atirar
 
 #### Dependências:
 - SDL2
@@ -19,12 +20,14 @@ Fazer a maior quantidade dde pontos possível.
 - SDL2_TTF
 - SDL2_image
 - MingW **(Windows)**
+- Compilador g++ com padrão de codificação C++11
 
 ## Como compilar
 **No linux:**
 Após instalar as dependências, baixe o projeto no github e rode o comando:  
 
 `make release`
+`make help` para ajuda de comandos
 
 O executável terá o nome JOGO
 
@@ -32,6 +35,7 @@ O executável terá o nome JOGO
 Após instalar as dependências, baixe o projeto no github e rode o comando:
 
 `mingw32-make release`
+`mingw32-make help` para ajuda de comandos
 
 O executável terá o nome JOGO.exe
 

@@ -1,21 +1,29 @@
 #include "StageState.hpp"
 
-StageState::StageState() : State()/*, bg("./resources/img/ocean.jpg")*/, newHiero(){
+StageState::StageState() : State(), bg("./resources/img/paisagem-do-deserto.jpg"), newHiero(){
     AddObject(new Falcon(PLAYER_BASE_LIFE));
     quitRequested = false;
+    Score::CreateInstance();
 }
 
 StageState::~StageState(){
     objectArray.clear();
+    Score::DeleteInstance();
 }
 
 void StageState::Update(float dt){
     UpdateArray(dt);
+    Score::Update(dt);
     
     // Novo Hiero
     newHiero.Update(dt);
     if(newHiero.Get() > HIERO_COOLDOWN){
-        AddObject(new Hiero(Vec2(Window::GetInstance().GetWindowDimensions().x, rand() % (int) Window::GetInstance().GetWindowDimensions().y)));
+        // Escolhe uma reta aleatória entre (x: meia tela ~ tela, y: 0 ~ 0) e (x: tela ~ tela, y: 0 ~ meia tela)
+        Vec2 randLine;
+        randLine = rand() % 2 == 0 ? Vec2((Window::GetInstance().GetWindowDimensions().x / 2), 0) : Vec2(Window::GetInstance().GetWindowDimensions().x, (Window::GetInstance().GetWindowDimensions().y / 2));
+        // Escolhe um ponto aleatório entre a reta escolhida
+        Vec2 hieroPos((rand() % ((int) (Window::GetInstance().GetWindowDimensions().x - randLine.x) + 1)) + randLine.x, rand() % ((int) randLine.y + 1));
+        AddObject(new Hiero(hieroPos));
         newHiero.Restart();
     }
 
@@ -42,13 +50,17 @@ void StageState::Update(float dt){
 }
 
 void StageState::Render(void) const {
-    // bg.Render(Rect(0, 0, bg.GetWidth(), bg.GetHeight()));
+    Vec2 windowPos = Window::GetInstance().GetWindowDimensions();
+    bg.Render(Rect(0, 0, windowPos.x, windowPos.y));
+    Score::Render();
 
     RenderArray();
 }
 
 void StageState::LoadAssets(void) const{
-    Resources::GetImage("./resources/img/ocean.jpg");
+    Resources::GetImage("./resources/img/penguin_sheet.png");
+    Resources::GetImage("./resources/img/penguin_shade.png");
+    Resources::GetImage("./resources/img/paisagem-do-deserto.jpg");
     Resources::GetImage("./resources/img/hiero.png");
 }
 

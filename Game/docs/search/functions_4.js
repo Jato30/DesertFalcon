@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['is',['Is',['../classFalcon.html#aed4615e04bb96064c41c20f653534300',1,'Falcon::Is()'],['../classHiero.html#a4d60c6fe6b083fefdf6964408d7dff13',1,'Hiero::Is()']]],
-  ['isdead',['IsDead',['../classFalcon.html#af3a5e5d40f0b4946a5e1a7c4b7b9f651',1,'Falcon::IsDead()'],['../classHiero.html#aeda4fc9c154bd901847e1b658718930c',1,'Hiero::IsDead()']]]
+  ['hide',['Hide',['../classScore.html#ac6c783e57a11f28c28132745a4197b82',1,'Score']]],
+  ['hiero',['Hiero',['../classHiero.html#aca73cb1f7886efee5bc68157c82786e0',1,'Hiero']]]
 ];
