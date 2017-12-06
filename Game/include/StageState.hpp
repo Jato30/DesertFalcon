@@ -11,6 +11,7 @@
 #include "State.hpp"
 #include "Timer.hpp"
 #include "Score.hpp"
+#include "Music.hpp"
 
 using std::vector;
 
@@ -72,9 +73,12 @@ class StageState: public State {
 	private:
 		Sprite bg;/**< Sprite de background*/
 		Timer newHiero;/**< Temporizador (cooldown) para aparição de um novo Hiero*/
+		Timer newObstacle;/**< Temporizador (cooldown) para aparição de um novo Obstáculo*/
+		Music music;/**< Música de fundo do jogo.*/
 };
 
 #include "Hiero.hpp"
+#include "Obstacle.hpp"
 #include "Vec2.hpp"
 #include "Window.hpp"
 #include "InputManager.hpp"

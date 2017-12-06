@@ -72,13 +72,6 @@ class Hiero : public GameObject {
 			Compara "Hiero" com a string recebida. Retorna true se for igual e false se for diferente.
 		*/
 		bool Is(string);
-		/**
-			\brief Informa posição do Rect no mundo.
-			\return Rect Rect renderizado no mundo.
-
-			Retorna um Rect contendo a posição em que este está em relação ao mundo, não à tela.
-		*/
-		Rect GetWorldRenderedRect(void) const;
 	
 	private:
 		Sprite sp;/**< Spritesheet de Hiero.*/

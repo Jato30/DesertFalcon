@@ -1,7 +1,7 @@
 #include "GameObject.hpp"
 #include "Error.hpp"
 
-GameObject::GameObject(void): rotation(0.), dead(false){
+GameObject::GameObject(void): rotation(0.), height(0), dead(false){
 }
 
 
@@ -34,7 +34,4 @@ bool GameObject::Is(string type){
 	return ("GameObject" == type);
 }
 
-Rect GameObject::GetWorldRenderedRect(void) const{
-	return box;
-}
 

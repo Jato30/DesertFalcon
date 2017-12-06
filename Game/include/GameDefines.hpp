@@ -9,4 +9,6 @@
 #define LINEAR_SPEED 300
 #define HIERO_DAMAGE 1
 #define HIERO_COOLDOWN 2
+#define OBSTACLE_COOLDOWN 3.3
+#define MAX_VOLUME 1
 

@@ -76,17 +76,11 @@ class GameObject{
 			É usado no tratamento de colisão para que se identifique com quem colidiu.
 		*/
 		virtual bool Is(string type);
-		/**
-			\brief Obtém Rect informando a posição renderizada da animação.
-
-			Obtém Rect informando a posição renderizada, computando zoom, escala e posição da câmera.
-		*/
-		virtual Rect GetWorldRenderedRect(void) const;
 		Rect box;/**< Posição do GameObject na tela.*/
 		float rotation;/**< Rotação do GameObject.*/
 
 	protected:
-		
+		int height;/**< Altura do Falcon.*/
 		bool dead;/**<Booleano informado se o GameObject deve ser destruído. Faz-se necessário para que a mecânia de RequestDelete e IsDead funcione em um GameObject. */
 };
 

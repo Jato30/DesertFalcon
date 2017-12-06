@@ -25,7 +25,7 @@ void Hiero::Update(float dt){
 }
 
 void Hiero::Render(void){
-     sp.Render(box);
+     sp.Render(box, rotation);
 }
 
 bool Hiero::IsDead(void){
@@ -44,9 +44,5 @@ void Hiero::NotifyCollision(GameObject& object){
 
 bool Hiero::Is(string type){
      return "Hiero" == type;
-}
-
-Rect Hiero::GetWorldRenderedRect(void) const{
-     return box;
 }
 

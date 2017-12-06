@@ -1,9 +1,8 @@
 #include "Falcon.hpp"
 
 Falcon::Falcon(int hitpoints) : GameObject()
-          , height(0)
           , sp("./resources/img/penguin_sheet.png",false, 0.1, 4)
-          , spShade("./resources/img/penguin_shade.png",false, 0.01, 2)
+          , spShade("./resources/img/penguin_shade.png",false, 0.03, 2)
           , hp(hitpoints)
           , speed(0., 0.) {
 
@@ -11,7 +10,10 @@ Falcon::Falcon(int hitpoints) : GameObject()
      spShade.SetScale(0.7);
      rotation = -38.264;
      box.SetWidthAndHeight(Vec2(sp.GetWidth(), sp.GetHeight()));
-     box = Vec2((Window::GetInstance().GetWindowDimensions().x / 2) - box.w, Window::GetInstance().GetWindowDimensions().y - box.h);
+     Vec2 windowPos = Window::GetInstance().GetWindowDimensions();
+     box = Vec2((windowPos.x / 2) - box.w, windowPos.y - box.h);
+     scoreUp.Open("./resources/audio/Curando.wav");
+     Resources::ChangeSoundVolume(MAX_VOLUME);
 }
 
 Falcon::~Falcon(){
@@ -37,7 +39,7 @@ void Falcon::Update(float dt){
      }
      if(ActionManager::LeftArrowAction()){
           speed.x = -LINEAR_SPEED * FALCON_SPEED_PROPORTION_X * dt;
-          speed.y = -LINEAR_SPEED * FALCON_SPEED_PROPORTION_Y  * dt;
+          speed.y = -LINEAR_SPEED * FALCON_SPEED_PROPORTION_Y * dt;
           if(box.x < 0){
                speed = 0;
           }
@@ -45,7 +47,7 @@ void Falcon::Update(float dt){
      
      if(ActionManager::RightArrowAction()){
           speed.x = LINEAR_SPEED * FALCON_SPEED_PROPORTION_X * dt;
-          speed.y = LINEAR_SPEED * FALCON_SPEED_PROPORTION_Y  * dt;
+          speed.y = LINEAR_SPEED * FALCON_SPEED_PROPORTION_Y * dt;
           if(box.y + box.h > windowSize.y){
                speed = 0;
           }
@@ -92,6 +94,7 @@ void Falcon::RequestDelete(void){
 void Falcon::NotifyCollision(GameObject& object){
      if(object.Is("Hiero")){
           if(height == 0){
+               scoreUp.Play(1);
                Damage(HIERO_DAMAGE);
                Score::Increase(1);
           }
@@ -100,10 +103,6 @@ void Falcon::NotifyCollision(GameObject& object){
 
 bool Falcon::Is(string type){
      return "Falcon" == type;
-}
-
-Rect Falcon::GetWorldRenderedRect(void) const{
-     return box;
 }
 
 void Falcon::Damage(int damage){
