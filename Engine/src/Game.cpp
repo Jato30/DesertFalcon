@@ -131,8 +131,25 @@ void Game::Run(void) {
 			}
 		}
 	
-		if(stateStack.top()->QuitRequested()) {
-			break;
+		if(stateStack.top()->QuitRequested()){
+            while(!stateStack.empty()){
+                stateStack.pop();
+            }
+            break;
+        	}
+
+		if(stateStack.top()->PopRequested()){
+			stateStack.pop();
+			if(!stateStack.empty()){
+				stateStack.top()->Resume();
+			}
+		}
+		if(storedState != nullptr){
+			if(!stateStack.empty()){
+				stateStack.top()->Pause();
+			}
+			stateStack.push(std::unique_ptr<State>(storedState));
+			storedState = nullptr;
 		}
 	
 		CalculateDeltaTime();

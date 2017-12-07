@@ -44,7 +44,7 @@ class StageState: public State {
 			Verifica se a saída do jogo foi requisitada.
 			Verifica se o encerramento do estado foi solicitado.
 		*/
-		void Update(float dt);
+		void Update(float);
 		/**
 			\brief Renderiza os elmentos do estado
 
@@ -81,9 +81,11 @@ class StageState: public State {
 #include "Obstacle.hpp"
 #include "Vec2.hpp"
 #include "Window.hpp"
+#include "Game.hpp"
 #include "InputManager.hpp"
 #include "Falcon.hpp"
 #include "Collision.hpp"
 #include "GameDefines.hpp"
+#include "EndState.hpp"
 
 #endif // __STAGE_STATE_HPP__

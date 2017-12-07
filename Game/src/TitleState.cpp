@@ -8,12 +8,12 @@ TitleState::TitleState() : State(), bg("./resources/img/titlescreen.png"){
 }
 
 void TitleState::Update(float dt){
-    dt = dt;
+    pressSpace->Update(dt);
+    
     if(QuitRequested() || InputManager::GetInstance().QuitRequested() || ActionManager::EscapeAction()){
         quitRequested = true;
     }
 
-    pressSpace->Update(dt);
 
     if(ActionManager::StartAction()){
         popRequested = true;

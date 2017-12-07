@@ -19,6 +19,8 @@ class ActionManager{
 
 		static bool EscapeAction();
 
+		static bool EnterKeyAction();
+
 	private:
 
 		ActionManager();

@@ -63,6 +63,8 @@ void StageState::Update(float dt){
     
     if(ActionManager::EscapeAction()){
         popRequested = true;
+        EndState* endState = new EndState(Score::GetScore());
+        Game::GetInstance().Push(endState);
     }
 }
 

@@ -47,3 +47,10 @@ bool ActionManager::StartAction(){
 
 }
 
+bool ActionManager::EnterKeyAction(){
+
+	return (INPUT_INSTANCE.IsKeyDown(SDLK_RETURN) 
+		 || INPUT_INSTANCE.IsKeyDown(SDLK_KP_ENTER) );
+
+}
+
