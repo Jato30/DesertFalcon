@@ -1,4 +1,6 @@
 /* DEFINES DO JOGO */
+#ifndef __GAME_DEFINES_HPP___
+#define __GAME_DEFINES_HPP___
 
 // GameObjects
 #define PLAYER_BASE_LIFE 1000
@@ -11,4 +13,10 @@
 #define HIERO_COOLDOWN 2
 #define OBSTACLE_COOLDOWN 3.3
 #define MAX_VOLUME 1
+
+namespace GlobalVars{
+     extern bool SET_ALL_SPEED;
+}
+
+#endif // __GAME_DEFINES_HPP__
 

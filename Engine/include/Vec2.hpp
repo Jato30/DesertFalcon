@@ -82,6 +82,7 @@ class Vec2 {
 			A mesma coisa de x= x-b(dado que x e b são Vec2).
 		*/
 		Vec2& operator-=(Vec2 const &b);
+		Vec2& operator*=(Vec2 const &b);
 		/**
 			\brief Verifica de dois Vec2 possuem os mesmos valores.
 			\return Verdadeiro se sim, falso caso contrário

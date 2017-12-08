@@ -77,10 +77,12 @@ void Falcon::Update(float dt){
 }
 
 void Falcon::Render(void){
-     Rect falconBox (box);
-     falconBox.y -= (box.h + 20) * height; 
-     spShade.Render(box, rotation);
-     sp.Render(falconBox, rotation);
+     if(!IsDead()){
+          Rect falconBox (box);
+          falconBox.y -= (box.h + 20) * height; 
+          spShade.Render(box, rotation);
+          sp.Render(falconBox, rotation);
+     }
 }
 
 bool Falcon::IsDead(void){
@@ -93,10 +95,21 @@ void Falcon::RequestDelete(void){
 
 void Falcon::NotifyCollision(GameObject& object){
      if(object.Is("Hiero")){
-          if(height == 0){
+          if(height == object.height){
                scoreUp.Play(1);
                Damage(HIERO_DAMAGE);
                Score::Increase(1);
+          }
+	}
+     if(object.Is("Enemy")){
+          if(height == object.height){
+               Damage(HIERO_DAMAGE * 200);
+          }
+	}
+     if(object.Is("Obstacle")){
+          if(height == 0){
+               GlobalVars::SET_ALL_SPEED = false;
+               Damage(HIERO_DAMAGE * 50);
           }
 	}
 }
@@ -107,5 +120,12 @@ bool Falcon::Is(string type){
 
 void Falcon::Damage(int damage){
      hp -= damage;
+     if(hp < 1){
+          Animation* death = new Animation(box.x, box.y, 0, "./resources/img/penguindeath.png", 0.15, 5);
+          Game::GetInstance().GetCurrentState().AddObject(death);
+          Sound* soundExplosion = new Sound("./resources/audio/boom.wav");
+          soundExplosion->Play(1);
+          RequestDelete();
+     }
 }
 

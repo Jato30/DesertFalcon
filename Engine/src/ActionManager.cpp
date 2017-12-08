@@ -37,7 +37,7 @@ bool ActionManager::DownArrowAction(){
 
 bool ActionManager::EscapeAction(){
 
-	return INPUT_INSTANCE.IsKeyDown(SDLK_ESCAPE);
+	return INPUT_INSTANCE.KeyPress(SDLK_ESCAPE);
 
 }
 

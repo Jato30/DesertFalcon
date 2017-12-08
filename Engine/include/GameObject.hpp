@@ -78,9 +78,9 @@ class GameObject{
 		virtual bool Is(string type);
 		Rect box;/**< Posição do GameObject na tela.*/
 		float rotation;/**< Rotação do GameObject.*/
+		int height;/**< Altura do objeto.*/
 
 	protected:
-		int height;/**< Altura do Falcon.*/
 		bool dead;/**<Booleano informado se o GameObject deve ser destruído. Faz-se necessário para que a mecânia de RequestDelete e IsDead funcione em um GameObject. */
 };
 

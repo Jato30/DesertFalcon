@@ -103,6 +103,8 @@ class Text {
 			Altera o conteúdo do texto. Para essa modificação fazer efeito a textura precisa ser refeita.
 		*/
 		void SetText(string);
+		void IncreaseText(string);
+		string GetText(void) const;
 		/**
 			\brief Altera a cor.
 			\param SDL_Color color Nova cor.

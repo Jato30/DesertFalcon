@@ -1,11 +1,13 @@
 #include "EndState.hpp"
 
 EndState::EndState(int newScore) : State(), bg("./resources/img/endscreen.gif"),
-    scoreList("./resources/font/Call me maybe.ttf", 16, Text::TextStyle::BLENDED, std::to_string(newScore), ColorName::WHITE, new Timer()),
+    scoreList("./resources/font/Call me maybe.ttf", 20, Text::TextStyle::BLENDED, std::to_string(newScore), ColorName::WHITE, new Timer()),
     title("./resources/font/Call me maybe.ttf", 48, Text::TextStyle::BLENDED, "Score", ColorName::WHITE, new Timer()){
 
     scoreList.SetPos(400, 280, true);
     title.SetPos(400, 120, true);
+    characters = 0;
+    thisScore = newScore;
 }
 
 EndState::~EndState(){
@@ -22,6 +24,22 @@ void EndState::Update(float dt){
         TitleState* titleState = new TitleState();
         Game::GetInstance().Push(titleState);
     }
+
+    // if(characters < 3){
+    //     // fflush(stdin);
+    //     // char c = std::cin.get();
+    //     // string str;
+    //     // std::stringstream ss;
+    //     // ss << c;
+    //     // ss >> str;
+    //     scoreList.IncreaseText(str);
+    //     characters++;
+    // }
+
+    // if(characters == 3){
+    //     scoreList.IncreaseText(" ..... " + std::to_string(thisScore));
+    // }
+
 }
 
 void EndState::Render(void) const{
@@ -41,6 +59,6 @@ void EndState::Resume(void){
 
 void EndState::LoadAssets(void) const{
     Resources::GetImage("./resources/img/endscreen.gif");
-    Resources::GetFont("./resources/font/Call me maybe.ttf", 16);
+    Resources::GetFont("./resources/font/Call me maybe.ttf", 20);
     Resources::GetFont("./resources/font/Call me maybe.ttf", 48);
 }

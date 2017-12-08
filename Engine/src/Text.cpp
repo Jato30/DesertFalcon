@@ -75,6 +75,15 @@ void Text::SetText(string text) {
 	RemakeTexture();
 }
 
+void Text::IncreaseText(string text) {
+	this->text+= text;
+	RemakeTexture();
+}
+
+string Text::GetText(void) const {
+	return text;
+}
+
 void Text::SetColor(SDL_Color color) {
 	this->color= color;
 	RemakeTexture();

@@ -12,6 +12,7 @@
 #include "Timer.hpp"
 #include "Score.hpp"
 #include "Music.hpp"
+#include "Falcon.hpp"
 
 using std::vector;
 
@@ -51,6 +52,7 @@ class StageState: public State {
 			Renderiza todo o array de objetos.
 		*/
 		void Render(void) const;
+		void Finish(void);
 		/**
 			\brief Pausa o estado
 
@@ -74,17 +76,21 @@ class StageState: public State {
 		Sprite bg;/**< Sprite de background*/
 		Timer newHiero;/**< Temporizador (cooldown) para aparição de um novo Hiero*/
 		Timer newObstacle;/**< Temporizador (cooldown) para aparição de um novo Obstáculo*/
+		Timer newEnemy;/**< Temporizador (cooldown) para aparição de um novo Inimigo*/
 		Music music;/**< Música de fundo do jogo.*/
+		Falcon* player;/**< Instância do jogador*/
+		Timer toEnd;/**< Temporizador (cooldown) para terminar o jogo.*/
 };
 
-#include "Hiero.hpp"
-#include "Obstacle.hpp"
 #include "Vec2.hpp"
+#include "Hiero.hpp"
+#include "Collision.hpp"
+#include "Enemy.hpp"
+#include "Obstacle.hpp"
 #include "Window.hpp"
 #include "Game.hpp"
 #include "InputManager.hpp"
 #include "Falcon.hpp"
-#include "Collision.hpp"
 #include "GameDefines.hpp"
 #include "EndState.hpp"
 

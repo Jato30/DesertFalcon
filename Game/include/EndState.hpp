@@ -12,6 +12,8 @@ class EndState : public State{
         Sprite bg;
         Text scoreList;
         Text title;
+        int characters;
+        int thisScore;
     
     public:
         EndState(int newScore);
@@ -31,5 +33,6 @@ class EndState : public State{
 #include "TitleState.hpp"
 #include "Timer.hpp"
 #include <cstdio>
+#include <sstream>
 
 #endif // __ENDSTATE_HPP__
